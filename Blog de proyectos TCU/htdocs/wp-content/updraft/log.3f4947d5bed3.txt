@@ -1,0 +1,150 @@
+0000.062 (0) Opened log file at time: Tue, 10 May 2022 00:12:12 +0000 on http://localhost/ucr_rgu
+0000.114 (0) UpdraftPlus WordPress backup plugin (https://updraftplus.com): 1.22.12 WP: 5.9.3 PHP: 8.1.5 (apache2handler, Windows NT DESKTOP-OEUJO1D 10.0 build 22000 (Windows 11) AMD64) MySQL: 10.4.24-MariaDB (max packet size=1048576) WPLANG: es_CR Server: Apache/2.4.53 (Win64) OpenSSL/1.1.1n PHP/8.1.5 safe_mode: 0 max_execution_time: 900 memory_limit: 512M (used: 43.3M | 44M) multisite: N openssl: OpenSSL 1.1.1n  15 Mar 2022 mcrypt: N LANG:  ZipArchive::addFile: Y
+0000.196 (0) Free space on disk containing Updraft's temporary directory: 604376.3 MB
+0000.745 (0) Tasks: Backup files: 1 (schedule: every4hours) Backup DB:  (schedule: every2hours)
+0000.898 (0) Processed schedules. Tasks now: Backup files: 1 Backup DB: 
+0001.025 (0) Requesting semaphore lock (f) (apparently via scheduler: last_scheduled_action_called_at=1652037049, seconds_ago=104484)
+0001.386 (0) Set semaphore last lock (f) time to 2022-05-10 00:12:13
+0001.433 (0) Semaphore lock (f) complete
+0001.651 (0) Backup run: resumption=0, nonce=3f4947d5bed3, file_nonce=3f4947d5bed3 begun at=1652141532 (2s ago), job type=backup
+0001.767 (0) Scheduling a resumption (1) after 300 seconds (1652141834) in case this run gets aborted
+0001.965 (0) Checking if we have a zip executable available
+0002.143 (0) Creation of backups of directories: beginning
+0002.284 (0) Beginning creation of dump of plugins (split every: 400 MB)
+0009.288 (0) Total entities for the zip file: 896 directories, 4191 files (0 skipped as non-modified), 86.3 MB
+0009.354 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 2.0 seconds have passed since the last write (0 MB, 1 (1) files added so far); re-opening (prior size: 0 KB)
+0009.695 (0) Zip: backup_2022-05-09-1812_Universidad_de_Costa_Rica_3f4947d5bed3-plugins.zip.tmp: 100 files added (on-disk size: 155.1 KB)
+0009.784 (0) Zip: backup_2022-05-09-1812_Universidad_de_Costa_Rica_3f4947d5bed3-plugins.zip.tmp: 200 files added (on-disk size: 155.1 KB)
+0009.887 (0) Zip: backup_2022-05-09-1812_Universidad_de_Costa_Rica_3f4947d5bed3-plugins.zip.tmp: 300 files added (on-disk size: 155.1 KB)
+0009.988 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 25 MB added on this batch (25.1 MB, 4191 files batched, 353 (354) added so far); re-opening (prior size: 155.1 KB)
+0019.002 (0) A useful amount of data was added after this amount of zip processing: 9.4 s (normalised: 9.4 s, rate: 2731.7 KB/s)
+0019.180 (0) Zip: backup_2022-05-09-1812_Universidad_de_Costa_Rica_3f4947d5bed3-plugins.zip.tmp: 400 files added (on-disk size: 6923.2 KB)
+0019.482 (0) Zip: backup_2022-05-09-1812_Universidad_de_Costa_Rica_3f4947d5bed3-plugins.zip.tmp: 500 files added (on-disk size: 6923.2 KB)
+0019.636 (0) Zip: backup_2022-05-09-1812_Universidad_de_Costa_Rica_3f4947d5bed3-plugins.zip.tmp: 600 files added (on-disk size: 6923.2 KB)
+0019.756 (0) Zip: backup_2022-05-09-1812_Universidad_de_Costa_Rica_3f4947d5bed3-plugins.zip.tmp: 700 files added (on-disk size: 6923.2 KB)
+0019.886 (0) Zip: backup_2022-05-09-1812_Universidad_de_Costa_Rica_3f4947d5bed3-plugins.zip.tmp: 800 files added (on-disk size: 6923.2 KB)
+0020.023 (0) Zip: backup_2022-05-09-1812_Universidad_de_Costa_Rica_3f4947d5bed3-plugins.zip.tmp: 900 files added (on-disk size: 6923.2 KB)
+0020.123 (0) Zip: backup_2022-05-09-1812_Universidad_de_Costa_Rica_3f4947d5bed3-plugins.zip.tmp: 1000 files added (on-disk size: 6923.2 KB)
+0020.250 (0) Zip: backup_2022-05-09-1812_Universidad_de_Costa_Rica_3f4947d5bed3-plugins.zip.tmp: 1100 files added (on-disk size: 6923.2 KB)
+0020.389 (0) Zip: backup_2022-05-09-1812_Universidad_de_Costa_Rica_3f4947d5bed3-plugins.zip.tmp: 1200 files added (on-disk size: 6923.2 KB)
+0020.590 (0) Zip: backup_2022-05-09-1812_Universidad_de_Costa_Rica_3f4947d5bed3-plugins.zip.tmp: 1300 files added (on-disk size: 6923.2 KB)
+0020.688 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 1000 files added on this batch (17.1 MB, 4191 files batched, 1001 (1355) added so far); re-opening (prior size: 6923.2 KB)
+0035.127 (0) Zip: backup_2022-05-09-1812_Universidad_de_Costa_Rica_3f4947d5bed3-plugins.zip.tmp: 1400 files added (on-disk size: 10311.9 KB)
+0035.252 (0) Zip: backup_2022-05-09-1812_Universidad_de_Costa_Rica_3f4947d5bed3-plugins.zip.tmp: 1500 files added (on-disk size: 10311.9 KB)
+0035.358 (0) Zip: backup_2022-05-09-1812_Universidad_de_Costa_Rica_3f4947d5bed3-plugins.zip.tmp: 1600 files added (on-disk size: 10311.9 KB)
+0035.486 (0) Zip: backup_2022-05-09-1812_Universidad_de_Costa_Rica_3f4947d5bed3-plugins.zip.tmp: 1700 files added (on-disk size: 10311.9 KB)
+0035.608 (0) Zip: backup_2022-05-09-1812_Universidad_de_Costa_Rica_3f4947d5bed3-plugins.zip.tmp: 1800 files added (on-disk size: 10311.9 KB)
+0035.786 (0) Zip: backup_2022-05-09-1812_Universidad_de_Costa_Rica_3f4947d5bed3-plugins.zip.tmp: 1900 files added (on-disk size: 10311.9 KB)
+0035.891 (0) Zip: backup_2022-05-09-1812_Universidad_de_Costa_Rica_3f4947d5bed3-plugins.zip.tmp: 2000 files added (on-disk size: 10311.9 KB)
+0036.040 (0) Zip: backup_2022-05-09-1812_Universidad_de_Costa_Rica_3f4947d5bed3-plugins.zip.tmp: 2100 files added (on-disk size: 10311.9 KB)
+0036.255 (0) Zip: backup_2022-05-09-1812_Universidad_de_Costa_Rica_3f4947d5bed3-plugins.zip.tmp: 2200 files added (on-disk size: 10311.9 KB)
+0036.367 (0) Zip: backup_2022-05-09-1812_Universidad_de_Costa_Rica_3f4947d5bed3-plugins.zip.tmp: 2300 files added (on-disk size: 10311.9 KB)
+0036.504 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 1000 files added on this batch (12.5 MB, 4191 files batched, 1001 (2356) added so far); re-opening (prior size: 10311.9 KB)
+0052.539 (0) Zip: backup_2022-05-09-1812_Universidad_de_Costa_Rica_3f4947d5bed3-plugins.zip.tmp: 2400 files added (on-disk size: 15315.4 KB)
+0052.697 (0) Zip: backup_2022-05-09-1812_Universidad_de_Costa_Rica_3f4947d5bed3-plugins.zip.tmp: 2500 files added (on-disk size: 15315.4 KB)
+0052.874 (0) Zip: backup_2022-05-09-1812_Universidad_de_Costa_Rica_3f4947d5bed3-plugins.zip.tmp: 2600 files added (on-disk size: 15315.4 KB)
+0053.002 (0) Zip: backup_2022-05-09-1812_Universidad_de_Costa_Rica_3f4947d5bed3-plugins.zip.tmp: 2700 files added (on-disk size: 15315.4 KB)
+0053.116 (0) Zip: backup_2022-05-09-1812_Universidad_de_Costa_Rica_3f4947d5bed3-plugins.zip.tmp: 2800 files added (on-disk size: 15315.4 KB)
+0053.254 (0) Zip: backup_2022-05-09-1812_Universidad_de_Costa_Rica_3f4947d5bed3-plugins.zip.tmp: 2900 files added (on-disk size: 15315.4 KB)
+0053.377 (0) Zip: backup_2022-05-09-1812_Universidad_de_Costa_Rica_3f4947d5bed3-plugins.zip.tmp: 3000 files added (on-disk size: 15315.4 KB)
+0053.502 (0) Zip: backup_2022-05-09-1812_Universidad_de_Costa_Rica_3f4947d5bed3-plugins.zip.tmp: 3100 files added (on-disk size: 15315.4 KB)
+0053.639 (0) Zip: backup_2022-05-09-1812_Universidad_de_Costa_Rica_3f4947d5bed3-plugins.zip.tmp: 3200 files added (on-disk size: 15315.4 KB)
+0053.899 (0) Zip: backup_2022-05-09-1812_Universidad_de_Costa_Rica_3f4947d5bed3-plugins.zip.tmp: 3300 files added (on-disk size: 15315.4 KB)
+0054.014 (0) Adding batch to zip file (UpdraftPlus_ZipArchive): over 1000 files added on this batch (18.3 MB, 4191 files batched, 1001 (3357) added so far); re-opening (prior size: 15315.4 KB)
+0081.605 (0) Zip: backup_2022-05-09-1812_Universidad_de_Costa_Rica_3f4947d5bed3-plugins.zip.tmp: 3400 files added (on-disk size: 20322.5 KB)
+0081.928 (0) Zip: backup_2022-05-09-1812_Universidad_de_Costa_Rica_3f4947d5bed3-plugins.zip.tmp: 3500 files added (on-disk size: 20322.5 KB)
+0082.146 (0) Zip: backup_2022-05-09-1812_Universidad_de_Costa_Rica_3f4947d5bed3-plugins.zip.tmp: 3600 files added (on-disk size: 20322.5 KB)
+0082.341 (0) Zip: backup_2022-05-09-1812_Universidad_de_Costa_Rica_3f4947d5bed3-plugins.zip.tmp: 3700 files added (on-disk size: 20322.5 KB)
+0082.524 (0) Zip: backup_2022-05-09-1812_Universidad_de_Costa_Rica_3f4947d5bed3-plugins.zip.tmp: 3800 files added (on-disk size: 20322.5 KB)
+0082.710 (0) Zip: backup_2022-05-09-1812_Universidad_de_Costa_Rica_3f4947d5bed3-plugins.zip.tmp: 3900 files added (on-disk size: 20322.5 KB)
+0083.197 (0) Zip: backup_2022-05-09-1812_Universidad_de_Costa_Rica_3f4947d5bed3-plugins.zip.tmp: 4000 files added (on-disk size: 20322.5 KB)
+0083.344 (0) Zip: backup_2022-05-09-1812_Universidad_de_Costa_Rica_3f4947d5bed3-plugins.zip.tmp: 4100 files added (on-disk size: 20322.5 KB)
+0104.379 (0) Creating zip file manifest (backup_2022-05-09-1812_Universidad_de_Costa_Rica_3f4947d5bed3-plugins.zip.list-temp.tmp)
+0104.512 (0) Successfully created zip file manifest (size: 342760)
+0105.119 (0) Created plugins zip (0) - 27623.1 KB in 102.8 s (268.8 KB/s) (sha1: c8bb578bc704d84d983843be6443631bd0952776, sha256: 01b3104a872a89f233ebc3c486902b1ccc5eb2fca1c61a2961f53b389b431e58)
+0105.234 (0) Beginning creation of dump of themes (split every: 400 MB)
+0106.388 (0) Total entities for the zip file: 124 directories, 622 files (0 skipped as non-modified), 12.5 MB
+0106.521 (0) Zip: backup_2022-05-09-1812_Universidad_de_Costa_Rica_3f4947d5bed3-themes.zip.tmp: 100 files added (on-disk size: 0 KB)
+0106.658 (0) Zip: backup_2022-05-09-1812_Universidad_de_Costa_Rica_3f4947d5bed3-themes.zip.tmp: 200 files added (on-disk size: 0 KB)
+0106.892 (0) Zip: backup_2022-05-09-1812_Universidad_de_Costa_Rica_3f4947d5bed3-themes.zip.tmp: 300 files added (on-disk size: 0 KB)
+0107.034 (0) Zip: backup_2022-05-09-1812_Universidad_de_Costa_Rica_3f4947d5bed3-themes.zip.tmp: 400 files added (on-disk size: 0 KB)
+0107.143 (0) Zip: backup_2022-05-09-1812_Universidad_de_Costa_Rica_3f4947d5bed3-themes.zip.tmp: 500 files added (on-disk size: 0 KB)
+0107.327 (0) Zip: backup_2022-05-09-1812_Universidad_de_Costa_Rica_3f4947d5bed3-themes.zip.tmp: 600 files added (on-disk size: 0 KB)
+0118.025 (0) Creating zip file manifest (backup_2022-05-09-1812_Universidad_de_Costa_Rica_3f4947d5bed3-themes.zip.list-temp.tmp)
+0118.141 (0) Successfully created zip file manifest (size: 40357)
+0118.426 (0) Created themes zip (0) - 9093 KB in 13.1 s (692 KB/s) (sha1: 7304871baf180f64b69c15550e5297b1b1345923, sha256: b6f8139483845ddaa54a9ef4d576b44cfd159a15ca76395a251724c4eb8a51ac)
+0118.568 (0) Exclusion option setting (uploads): backup*,*backups,backwpup*,wp-clone,snapshots
+0118.664 (0) Looking for candidates to backup in: P:\xampp\htdocs\ucr_rgu/wp-content/uploads
+0118.745 (0) finding files: 2022: adding to list (1)
+0118.802 (0) finding files: elementor: adding to list (2)
+0118.838 (0) finding files: ithemes-security: adding to list (3)
+0118.896 (0) Beginning creation of dump of uploads (split every: 400 MB)
+0119.119 (0) Total entities for the zip file: 7 directories, 44 files (0 skipped as non-modified), 7 MB
+0121.682 (0) Creating zip file manifest (backup_2022-05-09-1812_Universidad_de_Costa_Rica_3f4947d5bed3-uploads.zip.list-temp.tmp)
+0121.736 (0) Successfully created zip file manifest (size: 2173)
+0122.097 (0) Created uploads zip (0) - 7068.3 KB in 3.1 s (2246.4 KB/s) (sha1: 1cc35e127a4b5b27624e57d0bd2ee70163e889c4, sha256: fac9530bfecd180fb238d0ff60179d896377a018f67378237180b9c5ae31f966)
+0122.189 (0) Beginning backup of other directories found in the content directory (index: 0)
+0122.236 (0) Exclusion option setting (others): upgrade,cache,updraft,backup*,*backups,mysql.sql,debug.log
+0122.366 (0) Looking for candidates to backup in: P:\xampp\htdocs\ucr_rgu/wp-content
+0122.542 (0) finding files: index.php: adding to list (1)
+0122.599 (0) finding files: languages: adding to list (2)
+0122.657 (0) finding files: plugins: skipping: this is the plugins directory
+0122.715 (0) finding files: themes: skipping: this is the themes directory
+0122.784 (0) finding files: updraft: skipping: this is the updraft directory
+0122.831 (0) finding files: upgrade: skipping: excluded by options
+0122.889 (0) finding files: uploads: skipping: this is the uploads directory
+0123.175 (0) Total entities for the zip file: 3 directories, 88 files (0 skipped as non-modified), 2.9 MB
+0124.524 (0) Creating zip file manifest (backup_2022-05-09-1812_Universidad_de_Costa_Rica_3f4947d5bed3-others.zip.list-temp.tmp)
+0124.656 (0) Successfully created zip file manifest (size: 5532)
+0124.889 (0) Created others zip (0) - 825.6 KB in 1.8 s (448.9 KB/s) (sha1: a31c1e5464fd68acde841e13a9678f9509ff6515, sha256: 75d2a8ebe1ec292ea793af3cba19af826c947124f843c766d5586365c3c2592b)
+0125.228 (0) Saving backup status to database (elements: 8)
+0125.310 (0) No database backup (wp) - not part of this run
+0125.434 (0) backup_2022-05-09-1812_Universidad_de_Costa_Rica_3f4947d5bed3-plugins.zip: plugins: This file has not yet been successfully uploaded: will queue
+0125.542 (0) backup_2022-05-09-1812_Universidad_de_Costa_Rica_3f4947d5bed3-themes.zip: themes: This file has not yet been successfully uploaded: will queue
+0125.612 (0) backup_2022-05-09-1812_Universidad_de_Costa_Rica_3f4947d5bed3-uploads.zip: uploads: This file has not yet been successfully uploaded: will queue
+0125.706 (0) backup_2022-05-09-1812_Universidad_de_Costa_Rica_3f4947d5bed3-others.zip: others: This file has not yet been successfully uploaded: will queue
+0125.812 (0) Saving backup history. Total backup size: 43.6 MB
+0125.928 (0) Requesting upload of the files that have not yet been successfully uploaded (4)
+0126.046 (0) Cloud backup selection (1/1): none with instance (1/1) (last)
+0126.140 (0) No remote despatch: user chose no remote backup service
+0126.212 (0) Recording as successfully uploaded: backup_2022-05-09-1812_Universidad_de_Costa_Rica_3f4947d5bed3-plugins.zip
+0126.319 (0) Deleting zip manifest (backup_2022-05-09-1812_Universidad_de_Costa_Rica_3f4947d5bed3-plugins.zip.list.tmp)
+0126.389 (0) Recording as successfully uploaded: backup_2022-05-09-1812_Universidad_de_Costa_Rica_3f4947d5bed3-themes.zip
+0126.527 (0) Deleting zip manifest (backup_2022-05-09-1812_Universidad_de_Costa_Rica_3f4947d5bed3-themes.zip.list.tmp)
+0126.596 (0) Recording as successfully uploaded: backup_2022-05-09-1812_Universidad_de_Costa_Rica_3f4947d5bed3-uploads.zip
+0126.701 (0) Deleting zip manifest (backup_2022-05-09-1812_Universidad_de_Costa_Rica_3f4947d5bed3-uploads.zip.list.tmp)
+0126.821 (0) Recording as successfully uploaded: backup_2022-05-09-1812_Universidad_de_Costa_Rica_3f4947d5bed3-others.zip
+0126.937 (0) Deleting zip manifest (backup_2022-05-09-1812_Universidad_de_Costa_Rica_3f4947d5bed3-others.zip.list.tmp)
+0127.041 (0) Retain: beginning examination of existing backup sets; user setting: retain_files=2, retain_db=2
+0127.111 (0) Number of backup sets in history: 3; groups (db): 1
+0127.264 (0) Examining (for databases) backup set with group_id=0, nonce=c3cf6f19fe68, datestamp=1652141593 (May 10 2022 00:13:13)
+0127.427 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0127.496 (0) Examining (for databases) backup set with group_id=0, nonce=3f4947d5bed3, datestamp=1652141532 (May 10 2022 00:12:12)
+0127.496 (0) Examining (for databases) backup set with group_id=0, nonce=f5ee4620fc3d, datestamp=1652065950 (May 09 2022 03:12:30)
+0127.496 (0) This backup set remains non-empty (f=1/d=1); will retain in history
+0127.554 (0) Number of backup sets in history: 3; groups (files): 1
+0127.601 (0) Examining (for files) backup set with nonce=c3cf6f19fe68, datestamp=1652141593 (May 10 2022 00:13:13)
+0127.601 (0) This backup set remains non-empty (f=0/d=1); will retain in history
+0127.659 (0) Examining (for files) backup set with nonce=3f4947d5bed3, datestamp=1652141532 (May 10 2022 00:12:12)
+0127.659 (0) This backup set is the backup set just made, so will not be deleted.
+0127.739 (0) This backup set is the backup set just made, so will not be deleted.
+0127.739 (0) This backup set is the backup set just made, so will not be deleted.
+0127.740 (0) This backup set is the backup set just made, so will not be deleted.
+0127.740 (0) This backup set remains non-empty (f=1/d=0); will retain in history
+0127.835 (0) Examining (for files) backup set with nonce=f5ee4620fc3d, datestamp=1652065950 (May 09 2022 03:12:30)
+0127.835 (0) This backup set remains non-empty (f=1/d=1); will retain in history
+0127.882 (0) Retain: saving new backup history (sets now: 3) and finishing retain operation
+0127.998 (0) Resume backup (3f4947d5bed3, 0): finish run
+0128.127 (0) Decremented the semaphore (f) by 1
+0128.254 (0) Semaphore (f) unlocked
+0128.392 (0) There were no errors in the uploads, so the 'resume' event (1) is being unscheduled
+0128.799 (0) Fetching RSS news feed
+0128.955 (0) PHP event: code E_DEPRECATED: Return type of Requests_Utility_CaseInsensitiveDictionary::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice (line 40, P:\xampp\htdocs\ucr_rgu\wp-includes\Requests\Utility\CaseInsensitiveDictionary.php)
+0129.019 (0) PHP event: code E_DEPRECATED: Return type of Requests_Utility_CaseInsensitiveDictionary::offsetGet($key) should either be compatible with ArrayAccess::offsetGet(mixed $offset): mixed, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice (line 51, P:\xampp\htdocs\ucr_rgu\wp-includes\Requests\Utility\CaseInsensitiveDictionary.php)
+0129.066 (0) PHP event: code E_DEPRECATED: Return type of Requests_Utility_CaseInsensitiveDictionary::offsetSet($key, $value) should either be compatible with ArrayAccess::offsetSet(mixed $offset, mixed $value): void, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice (line 68, P:\xampp\htdocs\ucr_rgu\wp-includes\Requests\Utility\CaseInsensitiveDictionary.php)
+0129.124 (0) PHP event: code E_DEPRECATED: Return type of Requests_Utility_CaseInsensitiveDictionary::offsetUnset($key) should either be compatible with ArrayAccess::offsetUnset(mixed $offset): void, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice (line 82, P:\xampp\htdocs\ucr_rgu\wp-includes\Requests\Utility\CaseInsensitiveDictionary.php)
+0129.182 (0) PHP event: code E_DEPRECATED: Return type of Requests_Utility_CaseInsensitiveDictionary::getIterator() should either be compatible with IteratorAggregate::getIterator(): Traversable, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice (line 91, P:\xampp\htdocs\ucr_rgu\wp-includes\Requests\Utility\CaseInsensitiveDictionary.php)
+0129.240 (0) Fetched RSS news feed; result is a: SimplePie
+0129.337 (0) Sending email ('Files only (database was not part of this particular schedule) (Full backup)') report (attachments: 0, size: 0 KB) to: danie...
+0129.388 (0) An error occurred when sending a backup report email and/or backup file(s) via email (wp_mail_failed): Invalid address:  (From): wordpress@localhost
+0129.460 (0) The backup apparently succeeded and is now complete
