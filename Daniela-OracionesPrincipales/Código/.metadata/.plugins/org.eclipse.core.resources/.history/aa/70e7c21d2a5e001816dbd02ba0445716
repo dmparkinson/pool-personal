@@ -1,0 +1,54 @@
+package negocio;
+/*
+ * Controla las clases del programa
+ *  
+ * Tarea Programada del curso Algoritmos y Estructura de Datos de la Unuversidad de Costa Rica
+ * @version  2.0  Mayo 2018
+ * @author  Daniela Montero
+ */
+
+import presentacion.*;
+import datos.Archivo;
+import dominio.*;
+
+public class ControladoraPrincipal {
+	
+	Fichero fichero;
+	Palabra palabra;
+	
+	ControladoraGUIDocumento cGUID;
+	ControladoraGUIOoracionP cOP;
+
+	LogicaGUI logD;
+	Archivo arch;
+	GUIOracionPrincipal guiP;
+	
+	ListaEnlazada listaP;
+	ListaEnlazada listaRaiz;
+	ListaEnlazada lcontenedorRaiz;
+	
+	LogicaListaPalabras logP;
+	 
+	
+	public ControladoraPrincipal(){
+		
+		controlador();
+	}
+	
+	public void controlador() {
+		fichero = new Fichero();
+		guiP = new GUIOracionPrincipal();
+		arch = new Archivo();
+		logD = new LogicaGUI();
+		
+		logP = new LogicaListaPalabras();
+		listaP = new ListaEnlazada(); 
+		listaRaiz = new ListaEnlazada();
+		lcontenedorRaiz = new ListaEnlazada();
+		
+		cGUID = new ControladoraGUIDocumento(fichero,guiP,arch,logD,logP);
+		cOP = new ControladoraGUIOoracionP(fichero,guiP,arch,logD,logP,listaP,listaRaiz,lcontenedorRaiz);
+	
+	}
+}
+

@@ -1,0 +1,98 @@
+package negocio;
+
+import dominio.ListaEnlazada;
+import dominio.Nodo;
+
+public class LogicaListaRaiz {
+	
+	public boolean vacia(ListaEnlazada lista){
+	    return lista.getPrimero() == null;
+	 }
+	
+	public boolean insertar(ListaEnlazada lista,ListaEnlazada lPalabras){
+		
+	    boolean inserto = false;
+
+	    Nodo palabras = lPalabras.getPrimero();
+	    String raizObtenida = sacarRaiz(palabras);
+	    
+	    while(palabras != null) {
+	    	
+	    	Nodo raiz = new Nodo(raizObtenida);
+	    	if(vacia(lista)){
+	  	      lista.setPrimero(raiz);
+	  	      lista.setUltimo(raiz);
+	  	      inserto = true;
+	  	      lista.setCantNodos();
+	  	    }
+	    	else {
+	    		if(coinciden(palabras,lPalabras) == false) {}
+	    		lista.getUltimo().setEnlace(raiz);
+	    		lista.setUltimo (raiz);
+	    		lista.setCantNodos(); 
+	    		inserto = true;
+	    	}
+	    	palabras = palabras.getEnlace();
+	    }
+	    
+	    
+	    String salida ="";
+		  int num = 1;
+		  if(vacia(lista)) {
+			  salida = "La lista se encuentra vacia";
+		  }else {
+			  Nodo temporal =lista.getPrimero();
+			 while(temporal != null) {
+				 salida += num+"- "+temporal+salto;
+				 num++;
+			 } 
+		  } 
+	    
+	    
+	    return inserto;
+	  }
+	
+	
+	
+	
+	public String imprimirTodo(ListaEnlazada lista, String salto){  	  
+		  
+		  String salida ="";
+		  int num = 1;
+		  if(vacia(lista)) {
+			  salida = "La lista se encuentra vacia";
+		  }else {
+			  Nodo temporal =lista.getPrimero();
+			 while(temporal != null) {
+				 salida += num+"- "+temporal+salto;
+				 temporal = temporal.getEnlace();
+				 num++;
+			 } 
+		  }
+		  return salida;
+	  }
+
+	
+	public boolean coinciden(String palabra,ListaEnlazada lista) {
+		boolean iguales = false;
+		
+		Nodo temporal = lista.getPrimero();
+		String palTemporal=""; 
+		 while(temporal != null) {
+			 palTemporal = temporal.toString().trim();
+			 if(palabra.equals(palTemporal) ) {
+				 iguales = true;
+				 temporal = null;
+			 }
+			 else {
+				 temporal = temporal.getEnlace(); 
+			 }
+		 }
+		 return iguales;
+	}
+	
+	
+	public String sacarRaiz(Nodo palabra) {
+		return ((palabra.toString()).trim()).substring(0, 3);
+	}
+}

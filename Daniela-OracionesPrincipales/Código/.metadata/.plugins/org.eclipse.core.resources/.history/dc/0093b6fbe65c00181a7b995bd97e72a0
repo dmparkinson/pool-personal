@@ -1,0 +1,15 @@
+package negocio;
+
+public class LogicaGUI {
+	public LogicaGUI() {}
+	
+
+
+	//Se encarga de eliminar todas los tags del documento html para dejar texto plano
+	public String obtenerTexto(String informacion,String regex, String reemplazar){
+		return informacion.replaceAll(regex, reemplazar);
+	}
+	
+	
+	
+}

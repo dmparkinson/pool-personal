@@ -1,0 +1,5 @@
+
+Tiempo de llegada = 10
+Tiempo en ejecucion = 9847612$­û
+Tiempo de llegada = 10
+Tiempo en ejecucion = 5213350

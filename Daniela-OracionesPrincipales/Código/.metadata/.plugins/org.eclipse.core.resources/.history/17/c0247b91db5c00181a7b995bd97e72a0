@@ -1,0 +1,158 @@
+package negocio;
+
+
+import presentacion.GUIDocumento;
+import presentacion.GUIOracionPrincipal;
+import dominio.*;
+import datos.Archivo;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class ControladoraGUIOoracionP implements ActionListener{
+	
+	GUIOracionPrincipal guiOP;
+	
+	LogicaOracionPrincipal logO;
+	LogicaGUI log;
+	LogicaListaPalabras logP;
+	LogicaListaRaiz logR;
+	Fichero direccion;
+	Archivo arch;
+	Palabra palabra;
+	
+	private String seleccion;
+	
+	public ControladoraGUIOoracionP(Fichero fichero,GUIOracionPrincipal guiP,Archivo arch,
+			LogicaGUI logD,LogicaListaPalabras logP) {
+		
+		direccion = fichero;
+		this.arch = arch;
+		guiOP = guiP;
+		
+		logO = new LogicaOracionPrincipal();
+		logR = new LogicaListaRaiz();
+		this.logP = logP;
+		this.log = logD;
+		
+		palabra = new Palabra();
+				
+		inicializadorAcciones();
+	}
+
+
+	public void inicializadorAcciones() {
+		guiOP.getBObtener().addActionListener(this);
+		guiOP.getBRetroceder().addActionListener(this);
+		guiOP.getBBuscar().addActionListener(this);
+		guiOP.getBIniciar().addActionListener(this);
+		;
+
+	}
+	
+	public void actionPerformed(ActionEvent e) {
+		
+		if(e.getSource() == guiOP.getBIniciar() ) {
+			guiOP.getBIniciar().setVisible(false);
+			guiOP.getPOpciones().setVisible(true);
+			
+			String informacion = arch.leerArchivo(direccion.getDireccion());	
+            String infoFiltrada = log.obtenerTexto(informacion,"[^A-Za-zéáíóúÁÉÍÓÚ]"," ");//[^A-Za-zéáíóúÁÉÍÓÚ]
+            
+            // Lista de palabras
+            ListaEnlazada listaP = new ListaEnlazada(); //Lista de las  palabras
+            logP.obtenerPalabras(infoFiltrada,listaP);
+            guiOP.getTAPalabras().append(logP.imprimirTodo(listaP,"\n"));
+            
+            //Clasificacion de palabras
+			logP.clasificarPalabras(listaP, palabra);
+			
+			//Oracion Principal
+			guiOP.getTAOracion_Principal().append(logO.obtener(informacion,listaP));
+			
+			//Raiz
+			ListaEnlazada listaRaiz = new ListaEnlazada();
+			logR.obtenerPalabras(listaRaiz, listaP);
+			guiOP.getTARaices().append(logR.imprimirTodo(listaRaiz, "\n"));
+			
+			// Raiz de coincidencias
+		//	lista de las palabras con la raiz--->lista de todas las coincidencias
+			ListaEnlazada lcontenedorRaiz = new ListaEnlazada();
+			ListaEnlazada lcoincidencias = null;
+			for(int x = 1; x <= listaRaiz.getCantNodos(); x++) {
+				lcoincidencias = new ListaEnlazada();
+				logR.busquedaCoincidencias(listaRaiz,lcoincidencias,listaP,x);
+				logR.insertar(lcontenedorRaiz,logR.imprimirTodo(lcoincidencias, "\n"));
+			}
+			System.out.println(87);
+		
+		
+		if(e.getSource() == guiOP.getBObtener()) {
+			
+			guiOP.getBRetroceder().setVisible(true);
+			guiOP.getPOpciones().setVisible(false);
+			
+			seleccion = getEleccion();
+			if(seleccion == "Lista de palabras") {
+				guiOP.getPPalabras().setVisible(true);
+			}
+			else if(seleccion == "Lista de raices") {
+				guiOP.getPLRaices().setVisible(true);
+			}
+			else if(seleccion == "Oracion principal") {
+				guiOP.getPOracion_Principal().setVisible(true);
+			}
+			else if(seleccion == "Clasificacion de acentuación") {
+				guiOP.gettagudas().append(palabra.getagudas());
+				guiOP.gettagraves().append(palabra.getgraves());
+				guiOP.gettaesdrujulas().append(palabra.getesdrujulas());
+									
+				guiOP.getPSilabas().setVisible(true);
+			}
+			else if(seleccion == "Busqueda de palabras") {
+				guiOP.getPBusqueda().setVisible(true);
+				guiOP.getBBuscar().setVisible(true);
+				guiOP.getTFBusqueda().setVisible(true);
+			}
+		}
+		
+		if(e.getSource() == guiOP.getBRetroceder()) {
+
+			guiOP.getBRetroceder().setVisible(false);
+			guiOP.getPOpciones().setVisible(true);
+			
+			if(seleccion == "Lista de palabras") {
+				guiOP.getPPalabras().setVisible(false);
+			}
+			else if(seleccion == "Lista de raices") {
+				guiOP.getPLRaices().setVisible(false);
+			}
+			else if(seleccion == "Oracion principal") {
+				guiOP.getPOracion_Principal().setVisible(false);
+			}
+			else if(seleccion == "Clasificacion de acentuación") {
+				guiOP.getPSilabas().setVisible(false);
+			}
+			else if(seleccion == "Busqueda de palabras") {
+				guiOP.getPBusqueda().setVisible(false);
+				guiOP.getBBuscar().setVisible(false);
+				guiOP.getTFBusqueda().setVisible(false);
+			}
+		}
+	}
+	
+	  
+	public String getEleccion(){
+		return guiOP.getBGOpciones().getSelection().getActionCommand();
+	}
+	
+	private void setSeleccion() {
+		seleccion = null;
+	}
+	
+	public String getSeleccion() {
+		return seleccion;
+	}
+		  
+
+}

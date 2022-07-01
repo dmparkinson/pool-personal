@@ -1,0 +1,32 @@
+package dominio;
+
+public class Nodo {
+	private String dato;
+	private Nodo enlace;
+	  
+	  public Nodo ( String dato ){
+		  this.dato = dato;
+		  this.enlace = null;
+
+	  }
+	  public void setEnlace ( Nodo enlace ) {
+		  this.enlace = enlace;
+	  }
+	  
+	  public Nodo getEnlace ( ) {
+		  return this.enlace;	    
+	  }
+	  
+	  public void setPunto ( String dato) {
+		  this.dato = dato;
+	  }
+	  
+	  public String getPunto ( ) {    
+		  return this.dato;
+	  }
+	  
+	  public String toString(){ 
+		  return dato + "  ";
+	  }
+
+}

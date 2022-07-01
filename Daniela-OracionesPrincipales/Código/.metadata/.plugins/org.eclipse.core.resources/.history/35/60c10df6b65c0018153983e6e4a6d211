@@ -1,0 +1,49 @@
+package dominio;
+
+public class Palabra {
+	private  palabras;
+	private String raiz;
+	private String agudas;
+	private String graves;
+	private String esdrujulas;
+	private String busqueda;
+	
+	public Palabra() {
+		this.raiz = null;
+		this.agudas = null;
+		this.graves = null;
+		this.esdrujulas = null;
+
+	}
+	
+	
+	public void setraiz(String raiz) {
+		this.raiz = raiz;
+	}
+	public void setagudas(String agudas) {
+		this.agudas = agudas;
+	}
+	public void setgraves(String graves) {
+		this.graves = graves;
+	}
+	public void setesdrujulas(String esdrujulas) {
+		this.esdrujulas = esdrujulas;
+	}
+
+	
+	public String getraiz(){
+		return this.raiz;
+	}
+	public String getagudas(){
+		return this.agudas;
+	}
+	public String getgraves(){
+		return this.graves;
+	}
+	public String getesdrujulas(){
+		return this.esdrujulas;
+	}
+
+	
+
+}

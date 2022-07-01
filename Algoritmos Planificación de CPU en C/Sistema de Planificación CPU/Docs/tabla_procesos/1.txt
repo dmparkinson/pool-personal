@@ -1,0 +1,5 @@
+
+Tiempo de llegada = 1
+Tiempo en ejecucion = 66496503
+Tiempo de llegada = 1
+Tiempo en ejecucion = 46811154

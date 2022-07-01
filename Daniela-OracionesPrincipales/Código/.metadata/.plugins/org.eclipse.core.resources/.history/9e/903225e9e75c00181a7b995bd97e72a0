@@ -1,0 +1,34 @@
+package datos;
+
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
+public class SelectorArchivo extends JFrame{
+	
+	
+	/**
+	 * 
+	 */
+	public SelectorArchivo() {}
+	
+	public String abrir(){
+	    
+	    String archivoSelecionado ="";
+	    JFileChooser selector =new JFileChooser();
+	    FileNameExtensionFilter filter = new FileNameExtensionFilter(".txt,.html","txt","html");
+		
+	    
+	    selector.setFileFilter(filter);
+	    int returnVal = selector.showOpenDialog(this);
+	    if(returnVal == JFileChooser.APPROVE_OPTION){
+	      archivoSelecionado = selector.getSelectedFile().getPath();
+	    }
+	    else{
+	      JOptionPane.showMessageDialog(null,"No se pudo abrir el archivo","Error de Formato",JOptionPane.ERROR_MESSAGE);
+	    }
+	    return archivoSelecionado;
+	  }
+
+}

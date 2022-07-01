@@ -1,0 +1,95 @@
+package presentacion;
+
+import java.awt.Color;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JTextField;
+
+public class GUIDocumento extends JFrame{
+
+	private JButton bBuscar;
+	private JButton bGenerar;
+	private JButton bContinuar;
+	
+	private JButton bx;
+	
+	private JTextField txRuta;
+	
+	public GUIDocumento() {
+		
+		setBBuscar();
+		setBGenerar();
+		setBContinuar();
+		setBX();
+		
+		setTXRuta();
+		
+		add(txRuta);
+		add(bBuscar);
+		add(bContinuar);
+		add(bGenerar);
+		add(bx);
+		
+		inicializador();
+	}
+	
+	public void inicializador() {
+		setVisible(true);
+		setTitle("Seleccionar archivo");
+		setSize(330, 250);
+		setLayout(null);
+		setAlwaysOnTop(true);
+	    setLocationRelativeTo(null);
+	    setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		
+	}
+
+	
+	
+	private void setBBuscar(){
+		bBuscar = new JButton("Buscar ruta");
+		bBuscar.setBounds(100,90,140,25);
+	}
+	private void setBGenerar(){
+		bGenerar = new JButton("Generar");
+		bGenerar.setBounds(40,140,110,25);
+	}
+	private void setBContinuar(){
+		bContinuar = new JButton("Continuar");
+		bContinuar.setBounds(180,140,110,25);
+		bContinuar.setEnabled(false);
+	}
+	
+	private void setBX(){
+		bx = new JButton("Continuar");
+		bx.setVisible(false);
+		bx.setBounds(180,130,100,30);
+	}
+	
+	
+	private void setTXRuta(){
+		txRuta = new JTextField();
+		txRuta.setBounds(20,30,280,30);
+		txRuta.setDisabledTextColor(Color.BLACK);
+	}
+	
+	public JButton getBBuscar(){
+		return bBuscar;
+	}
+	
+	public JButton getBGenerar(){
+		return bGenerar;
+	}
+	
+	public JButton getBContinuar(){
+		return bContinuar;
+	}
+	public JButton getBX(){
+		return bx;
+	}
+	
+	public JTextField getTXRuta(){
+		return txRuta;
+	}
+}

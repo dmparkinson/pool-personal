@@ -1,0 +1,87 @@
+package negocio;
+
+/*
+ *Controla la GUIDocumento ademas de encargarse del llamado de los metodos necesarios para la conversion de html a txt  
+ * Tarea Programada del curso Algoritmos y Estructura de Datos de la Unuversidad de Costa Rica
+ * @version  2.0  Mayo 2018
+ * @author  Daniela Montero
+ */
+
+import datos.*;
+import dominio.*;
+import presentacion.GUIDocumento;
+import presentacion.GUIOracionPrincipal;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Vector;
+
+
+public class ControladoraGUIDocumento implements ActionListener{
+	
+	GUIDocumento gui;
+	Archivo arch;
+	LogicaGUI log;
+	GUIOracionPrincipal guiP;
+		
+	LogicaListaPalabras logP;
+	
+	 
+	public ControladoraGUIDocumento(GUIOracionPrincipal guiP,LogicaGUI logD, 
+			                         LogicaListaPalabras logP) {
+		arch = new Archivo();
+		this.guiP = guiP;
+		this.logP = logP;
+		log = logD;
+	
+		gui = new GUIDocumento();		
+		
+		inicializadorAcciones();
+	}
+
+
+	public void inicializadorAcciones() {
+		gui.getBSeleccionar().addActionListener(this);
+		gui.getBBuscar().addActionListener(this);
+	}
+	
+	public void actionPerformed(ActionEvent e) {
+
+		//"\\<p[\\>]*\\>",
+			
+			/*String texto = log.obtenerTexto(arch.leerArchivo("src/ficheros/html/15 mascarillas caseras para el cabello |Tratamientos.html"),"^<p>\\.*?\\</p>","");			
+		
+			direccion.setEtiqueta(arch.obtenerEtiqueta("src/ficheros/html/15 mascarillas caseras para el cabello |Tratamientos.html"));
+			direccion.setDireccion("src/ficheros/archivos de texto/"+direccion.getEtiqueta()+".txt");
+			arch.guardarArchivo(texto.replaceAll(" +", " ").trim(),direccion);
+			System.out.print(texto);*/
+		if(e.getSource() == gui.getBBuscar()) {
+			String buscar = gui.getTFBuscar().getText();
+			
+			String html[] = arch.obtenerHTML("src/ficheros/html");
+			for(int x= 0; x< html.length; x++){
+				Fichero direccionHTML = new Fichero("html/"+html[x]);
+				
+				String texto =log.obtenerTexto(arch.leerArchivo(direccionHTML+""),"^<p>\\.*?\\</p>","");//Obtiene el texto
+				System.out.print(new Fichero("archivos de texto/"+arch.obtenerEtiqueta(html[x])));
+			//	Fichero direccionTXT = new Fichero("archivos de texto/"+arch.obtenerEtiqueta(html[x]));// Genera la direccion donde guardar el txt
+				//arch.guardarArchivo(texto.replaceAll(" +", " ").trim(),direccionTXT+"");//Guarda la direccion
+		//		gui.vectorRutas= new String[6];
+			}
+		}
+		
+		
+		if(e.getSource() == gui.getBSeleccionar()) {
+			
+			
+			//guiP.getLEtiqueta().setText(direccion.getEtiqueta());
+			
+			gui.setVisible(false);		
+			//guiP.setVisible(true);
+		
+		}
+	}
+	
+	
+
+}

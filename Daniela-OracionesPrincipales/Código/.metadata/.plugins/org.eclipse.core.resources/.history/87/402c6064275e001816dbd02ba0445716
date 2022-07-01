@@ -1,0 +1,42 @@
+package datos;
+
+/*
+ * Busca en la computadora la ubucacion del archivo html
+ *  
+ * Tarea Programada del curso Algoritmos y Estructura de Datos de la Unuversidad de Costa Rica
+ * @version  2.0  Mayo 2018
+ * @author  Daniela Montero
+ */
+
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
+public class SelectorArchivo extends JFrame{
+	
+	
+	/**
+	 * Busca y abre el archivo html
+	 */
+	public SelectorArchivo() {}
+	
+	public String abrir(){
+	    
+	    String archivoSelecionado ="";
+	    JFileChooser selector =new JFileChooser();
+	    FileNameExtensionFilter filter = new FileNameExtensionFilter(".txt,.html","txt","html");
+		
+	    
+	    selector.setFileFilter(filter);
+	    int returnVal = selector.showOpenDialog(this);
+	    if(returnVal == JFileChooser.APPROVE_OPTION){
+	      archivoSelecionado = selector.getSelectedFile().getPath();
+	    }
+	    else{
+	      JOptionPane.showMessageDialog(null,"No se pudo abrir el archivo","Error de Formato",JOptionPane.ERROR_MESSAGE);
+	    }
+	    return archivoSelecionado;
+	  }
+
+}

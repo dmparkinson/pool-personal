@@ -1,0 +1,13 @@
+package negocio;
+
+import dominio.ListaPalabras;
+
+public class LogicaOracionPrincipal {
+	
+	public String obtener(String texto, ListaPalabras lista) {
+		String oracion ="";
+		
+		return oracion;
+	}
+
+}

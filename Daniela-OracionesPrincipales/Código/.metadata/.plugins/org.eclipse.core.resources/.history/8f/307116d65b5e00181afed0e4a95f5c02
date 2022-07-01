@@ -1,0 +1,100 @@
+package presentacion;
+
+/*
+ * Interfaz principal del programa
+ *  
+ * Tarea Programada del curso Algoritmos y Estructura de Datos de la Unuversidad de Costa Rica
+ * @version  2.0  Mayo 2018
+ * @author  Daniela Montero
+ */
+
+import java.awt.Color;
+
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
+
+public class GUIDocumento extends JFrame{
+
+	private JButton bSeleccionar;
+	private JComboBox cxArchivos;
+	private JScrollPane spAarchivos;
+	 
+	public String vectorEstilo[] = {"holaa","holaa","holaa","holaa","holaa","holaa","holaa","holaa"}; 
+	
+	private JButton bx;
+	
+	
+	public GUIDocumento() {
+		
+		setBSeleccionar();
+		
+		setCXarchivos(vectorEstilo);
+		setSPArchivos(cxArchivos);
+		
+		setBx();
+		add(cxArchivos);
+		add(spAarchivos);
+	    add(bSeleccionar);
+		add(bx);
+		
+		inicializador();
+	}
+	
+	public void inicializador() {
+		setVisible(true);
+		setTitle("Seleccionar archivo");
+		setSize(450, 450);
+		setLayout(null);
+		setAlwaysOnTop(true);
+	    setLocationRelativeTo(null);
+	    setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		
+	}
+
+	
+	
+	private void setBSeleccionar(){
+		bSeleccionar= new JButton("Continuar");
+		bSeleccionar.setBounds(310,340,110,25);
+	}
+	
+	
+	public JButton getBSeleccionar(){
+		return bSeleccionar;
+	}
+	
+	private void setBx(){
+		bx= new JButton("Error");
+		bx.setBounds(180,140,110,25);
+		bx.setVisible(false);
+		bx.setEnabled(false);
+	}
+	
+	
+	private void setCXarchivos(String vectorEstilo[]){
+	    cxArchivos = new JComboBox(vectorEstilo);
+	    cxArchivos.setBounds(100,40,130,20);
+	 	  }
+	private void setSPArchivos(JComboBox cxArchivos){
+		spAarchivos = new JScrollPane(cxArchivos,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
+				JScrollPane.VERTICAL_SCROLLBAR_NEVER);
+		spAarchivos.setBounds(100,40,130,20);
+  }
+	  
+	  public JComboBox getCXarchivos(){
+	    return cxArchivos;
+	  }
+	  
+	  public JScrollPane getSPArchivos(){
+			return spAarchivos;
+	  }  
+	
+	
+	  public JButton getBx(){
+		return bx;
+	}
+}
+

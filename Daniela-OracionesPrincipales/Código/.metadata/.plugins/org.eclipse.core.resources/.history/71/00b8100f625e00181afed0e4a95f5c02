@@ -1,0 +1,183 @@
+package negocio;
+/*
+ * Clase que controla la  interfaz de la ventana GUIOracionPrincipal, adedmas de controlar los metodos
+ * necesarios para obtener la clasificacion de las palabras, las palabras, las raices, la oracion principal
+ *  y la busqueda de palabras.
+ *  
+ * Tarea Programada del curso Algoritmos y Estructura de Datos de la Unuversidad de Costa Rica
+ * @version  2.0  Mayo 2018
+ * @author  Daniela Montero
+ */
+
+import presentacion.GUIDocumento;
+import presentacion.GUIOracionPrincipal;
+import dominio.*;
+import datos.Archivo;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class ControladoraGUIOoracionP implements ActionListener{
+	
+	GUIOracionPrincipal guiOP;
+	ListaEnlazada listaRaiz;
+	ListaEnlazada lcontenedorRaiz;
+	ListaEnlazada listaP;	
+	LogicaOracionPrincipal logO;
+	LogicaBusquedaPalabras logB;
+	LogicaGUI log;
+	LogicaListaPalabras logP;
+	LogicaListaRaiz logR;
+	Fichero direccion;
+	Archivo arch;
+	Palabra palabra;
+	
+	private String seleccion;
+	
+	public ControladoraGUIOoracionP(Fichero fichero,GUIOracionPrincipal guiP,
+			LogicaGUI logD,LogicaListaPalabras logP,ListaEnlazada listaP,ListaEnlazada listaRaiz,
+			ListaEnlazada lcontenedorRaiz) {
+		
+		direccion = fichero;
+		this.arch = arch;
+		guiOP = guiP;
+		this.listaP = listaP;
+		
+		logO = new LogicaOracionPrincipal();
+		logB = new LogicaBusquedaPalabras();
+		logR = new LogicaListaRaiz();
+		this.logP = logP;
+		this.log = logD;
+		this.listaRaiz = listaRaiz;
+		this.lcontenedorRaiz = lcontenedorRaiz; 
+		
+		palabra = new Palabra();
+				
+		inicializadorAcciones();
+	}
+
+
+	public void inicializadorAcciones() {
+		guiOP.getBObtener().addActionListener(this);
+		guiOP.getBRetroceder().addActionListener(this);
+		guiOP.getBBuscar().addActionListener(this);
+		guiOP.getBIniciar().addActionListener(this);
+		;
+
+	}
+	
+	public void actionPerformed(ActionEvent e) {
+		
+		if(e.getSource() == guiOP.getBIniciar() ) {
+			guiOP.getBIniciar().setVisible(false);
+			guiOP.getPOpciones().setVisible(true);
+			
+			String informacion = arch.leerArchivo(direccion.getDireccion());	
+            String infoFiltrada = log.obtenerTexto(informacion,"[^A-Za-z����������]"," ");//[^A-Za-z����������]
+            
+            // Lista de palabras
+            logP.obtenerPalabras(infoFiltrada,listaP);
+            guiOP.getTAPalabras().append(logP.imprimirTodo(listaP,"\n"));
+            
+            //Clasificacion de palabras
+			logP.clasificarPalabras(listaP, palabra);
+			
+			//Oracion Principal
+			guiOP.getTAOracion_Principal().append(logO.obtener(informacion,listaP));
+			
+			//Raiz
+			logR.obtenerPalabras(listaRaiz, listaP);
+			guiOP.getTARaices().append(logR.imprimirTodo(listaRaiz, "\n"));
+			
+			// Raiz de coincidencias
+		//	lista de las palabras con la raiz--->lista de todas las coincidencias
+			ListaEnlazada lcoincidencias = null;
+			for(int x = 1; x <= listaRaiz.getCantNodos(); x++) {
+				lcoincidencias = new ListaEnlazada();
+				logR.busquedaCoincidencias(listaRaiz,lcoincidencias,listaP,x);
+				logR.insertar(lcontenedorRaiz,logR.imprimirTodo(lcoincidencias, "\n"));
+			}
+		}
+		
+		
+		if(e.getSource() == guiOP.getBObtener()) {
+			
+			guiOP.getBRetroceder().setVisible(true);
+			guiOP.getPOpciones().setVisible(false);
+			
+			seleccion = getEleccion();
+			if(seleccion == "Lista de palabras") {
+				guiOP.getPPalabras().setVisible(true);
+			}
+			else if(seleccion == "Lista de raices") {
+				guiOP.getPLRaices().setVisible(true);
+			}
+			else if(seleccion == "Oracion principal") {
+				guiOP.getPOracion_Principal().setVisible(true);
+			}
+			else if(seleccion == "Clasificacion de acentuaci�n") {
+				guiOP.gettagudas().append(palabra.getagudas());
+				guiOP.gettagraves().append(palabra.getgraves());
+				guiOP.gettaesdrujulas().append(palabra.getesdrujulas());
+									
+				guiOP.getPSilabas().setVisible(true);
+			}
+			else if(seleccion == "Busqueda de palabras") {
+				
+
+				guiOP.getPBusqueda().setVisible(true);
+				guiOP.getBBuscar().setVisible(true);
+				guiOP.getTFBusqueda().setVisible(true);
+			}
+			else if(e.getSource() == guiOP.getBBuscar()) {
+				String palabra = guiOP.getTABusqueda().getText();
+				if(logB.coinciden(palabra,listaP) == true) {
+					int numLista = logB.buscarLista(logB.obtenerRaiz(palabra),listaRaiz);
+					guiOP.getTABusqueda().append(logB.imprimirLista(lcontenedorRaiz,numLista));
+				}
+				else {
+					guiOP.getTABusqueda().append("No se encontraron coincidencias");
+				}
+			}
+		}
+		
+		if(e.getSource() == guiOP.getBRetroceder()) {
+
+			guiOP.getBRetroceder().setVisible(false);
+			guiOP.getPOpciones().setVisible(true);
+			
+			if(seleccion == "Lista de palabras") {
+				guiOP.getPPalabras().setVisible(false);
+			}
+			else if(seleccion == "Lista de raices") {
+				guiOP.getPLRaices().setVisible(false);
+			}
+			else if(seleccion == "Oracion principal") {
+				guiOP.getPOracion_Principal().setVisible(false);
+			}
+			else if(seleccion == "Clasificacion de acentuaci�n") {
+				guiOP.getPSilabas().setVisible(false);
+			}
+			else if(seleccion == "Busqueda de palabras") {
+				guiOP.getPBusqueda().setVisible(false);
+				guiOP.getBBuscar().setVisible(false);
+				guiOP.getTFBusqueda().setVisible(false);
+			}
+		}
+	}
+	
+	  
+	public String getEleccion(){
+		return guiOP.getBGOpciones().getSelection().getActionCommand();
+	}
+	
+	private void setSeleccion() {
+		seleccion = null;
+	}
+	
+	public String getSeleccion() {
+		return seleccion;
+	}
+		  
+
+}

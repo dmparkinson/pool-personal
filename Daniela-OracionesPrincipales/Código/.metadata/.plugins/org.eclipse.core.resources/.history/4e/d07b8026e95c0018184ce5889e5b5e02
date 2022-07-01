@@ -1,0 +1,22 @@
+package negocio;
+/*
+ * Clase que elimina caracteres que no son reqqueridos a lo largo del programa
+ *  
+ * Tarea Programada del curso Algoritmos y Estructura de Datos de la Unuversidad de Costa Rica
+ * @version  2.0  Mayo 2018
+ * @author  Daniela Montero
+ */
+
+public class LogicaGUI {
+	public LogicaGUI() {}
+	
+
+
+	//Se encarga de eliminar todas los tags del documento html para dejar texto plano
+	public String obtenerTexto(String informacion,String regex, String reemplazar){
+		return informacion.replaceAll(regex, reemplazar);
+	}
+	
+	
+	
+}

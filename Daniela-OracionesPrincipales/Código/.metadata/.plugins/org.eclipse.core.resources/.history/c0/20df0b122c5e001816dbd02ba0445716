@@ -1,0 +1,70 @@
+package presentacion;
+
+/*
+ * Interfaz principal del programa
+ *  
+ * Tarea Programada del curso Algoritmos y Estructura de Datos de la Unuversidad de Costa Rica
+ * @version  2.0  Mayo 2018
+ * @author  Daniela Montero
+ */
+
+import java.awt.Color;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JTextField;
+
+public class GUIDocumento extends JFrame{
+
+	private JButton bSeleccionar;
+	
+	private JButton bx;
+	
+	
+	public GUIDocumento() {
+		
+		setBSeleccionar();
+		setBx();
+		
+	    add(bSeleccionar);
+		add(bx);
+		
+		inicializador();
+	}
+	
+	public void inicializador() {
+		setVisible(true);
+		setTitle("Seleccionar archivo");
+		setSize(400, 400);
+		setLayout(null);
+		setAlwaysOnTop(true);
+	    setLocationRelativeTo(null);
+	    setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		
+	}
+
+	
+	
+	private void setBSeleccionar(){
+		bSeleccionar= new JButton("Continuar");
+		bSeleccionar.setBounds(380,340,110,25);
+	}
+	
+	
+	public JButton getBSeleccionar(){
+		return bSeleccionar;
+	}
+	
+	private void setBx(){
+		bx= new JButton("Error");
+		bx.setBounds(180,140,110,25);
+		bx.setVisible(false);
+		bx.setEnabled(false);
+	}
+	
+	
+	public JButton getBx(){
+		return bx;
+	}
+}
+

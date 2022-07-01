@@ -1,0 +1,29 @@
+package dominio;
+
+public class Fichero {
+	private String etiqueta;
+	private String direccion;
+	  
+	  public Fichero (){
+		  this.etiqueta = null;
+		  this.direccion = null;
+	  }
+
+
+	  public void setEtiqueta ( String etiqueta) {
+		  this.etiqueta = etiqueta;
+	  }
+	  
+	  public String getEtiqueta ( ) {    
+		  return this.etiqueta;
+	  }
+	  
+	  public void setDireccion(String direccion) {
+		  this.direccion = direccion;
+	  }
+	  
+	  public String getDireccion(){ 
+		  return  direccion;
+	  }
+	  
+}

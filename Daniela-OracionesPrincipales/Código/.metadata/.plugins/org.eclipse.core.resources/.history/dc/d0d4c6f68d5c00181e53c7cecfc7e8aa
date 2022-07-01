@@ -1,0 +1,226 @@
+package negocio;
+
+import java.util.StringTokenizer;
+
+import dominio.*;
+
+public class LogicaListaPalabras {
+	
+	
+	/*
+	 * Se encarga de obtener las palabras de la cadena informacion ademas de llamar al metodo que 
+	 * agrega lasa palabras a la lista enlazada, para agregar palabras se debe cumplis con la condicion
+	 * que se encuentra en el metodo verificar.Cuando se agrega una palabra sus caracteres pasan a minuscula
+	 * */
+	public void obtenerPalrabas(String informacion,ListaPalabras listaP) {
+		String palabra = "";
+		StringTokenizer tokens = new StringTokenizer(informacion);
+	    	    
+	    while(tokens.hasMoreTokens() ){// hasMoreTokens: Se encarga de buscar espacios
+	    	palabra = tokens.nextToken();//tokens.nextToken():  Agarra cada palabra 
+	    	if(verificar(palabra) == true) {
+	    		insertar(listaP,palabra.toLowerCase());
+	    	}
+	    }    	
+	}
+	
+	public boolean verificar(String palabra) {
+		boolean cumple = false;
+		if(palabra.length() < 24 && palabra.length() > 3) {
+			cumple = true;
+		}
+		return cumple;
+	}
+	
+	
+	
+	public boolean vacia(ListaPalabras lista){
+	    return lista.getPrimero() == null;
+	  }
+
+	
+	public boolean insertar(ListaPalabras lista, String palabra){
+	    boolean inserto = false;
+	    Nodo nodo = new Nodo(palabra);
+	    
+	    if(vacia(lista)){
+	      lista.setPrimero(nodo);
+	      lista.setUltimo(nodo);
+	      inserto = true;
+	    }
+	    else{
+
+	      lista.getUltimo().setEnlace(nodo);
+	      lista.setUltimo (nodo);
+	      
+	      inserto = true;
+	    }
+	    lista.setCantNodos();
+	    return inserto;
+	  }
+	
+	
+	
+	
+	public String imprimirTodo(ListaPalabras lista, String salto){  	  
+		  
+		  String salida ="";
+		  int num = 1;
+		  if(vacia(lista)) {
+			  salida = "La lista se encuentra vacia";
+		  }else {
+			  Nodo temporal =lista.getPrimero();
+			 while(temporal != null) {
+				 salida += num+"- "+temporal+salto;
+				 temporal = temporal.getEnlace();
+				 num++;
+			 } 
+		  }
+		  return salida;
+	  }
+	
+	
+//------------------------------------Clasificacion de palabras----------------------
+	
+	public void clasificarPalabras(ListaPalabras lista, Palabra palabras){ 
+		  
+		  String palabra ="";
+		 // String silabas;
+		 // String acento;
+		  if(vacia(lista)) {
+			  palabra = "La lista se encuentra vacia";
+		  }else {
+			  Nodo temporal =lista.getPrimero();
+			 while(temporal != null) {
+				 palabra =temporal+"";
+				 temporal = temporal.getEnlace();
+				 String silabas = sacarSilabas(palabra,palabra.charAt(0)+"",1);
+				 
+				 String acento = sacarAcento(silabas,sacarCantSilabas(silabas));  
+				 System.out.println(silabas);
+			 } 
+		  }
+	  }
+	
+	
+	public String sacarSilabas(String pal, String silabas,int x){
+        /*
+         * Si la letra anterior es una consonante y la actual tambien
+         * si es la ultima letra
+         */
+    if(x == pal.length()){
+      return silabas;
+    }else{  
+      if( (x == pal.length()-1) || (verificar(pal.charAt(x),"aeiouéáíóú",0,false) == true) ){
+          /*
+           *Hiatos 
+           * Diptongos
+           */
+          if((verificar(pal.charAt(x),"aeoéáíóú",0,false) == true) && (verificar(pal.charAt(x-1),"aeoéáíóú",0,false) ==true) ){
+            silabas += "-"+pal.charAt(x);
+          }
+          else{  
+            silabas += pal.charAt(x); 
+          }
+       }
+       else{//Si es una consonante
+         if( pal.charAt(x) == pal.charAt(x-1) ){//Si son iguales se separan
+           silabas += pal.charAt(x);
+         }
+
+         if(verificar(pal.charAt(x),"hlr",0,false) == true){
+           if( ((pal.charAt(x) == 'r') && (verificar(pal.charAt(x-1),"bcdfgkpqtvz",0,false) == true) )||
+               ((pal.charAt(x) == 'l') && (verificar(pal.charAt(x-1),"bcdfgkpqtvz",0,false) == true)) ||
+                ((pal.charAt(x) == 'h') && (pal.charAt(x-1) == 'c')) ){
+            silabas += pal.charAt(x); 
+           }
+           else{
+             silabas += "-"+pal.charAt(x);
+           }
+         }
+         //se separan dos consonantes entre dos vocales se separan, r y l se toman como vocal    
+         else if( (x < pal.length()-2 ) && (verificar(pal.charAt(x-1),"aeiouéáíóú",0,false) == true) && 
+                      (verificar(pal.charAt(x+1),"aeiouéáíóú",0,false) == false) && (verificar(pal.charAt(x+2),"aeiouéáíóúlr",0,false)) ){
+           silabas += pal.charAt(x);
+         }
+         /*
+          * Cuando hay cuatro consonantes entre vocales, las primeras dos se unen a la primera vocal y
+          * las otras dos se unen a la segunda vocal
+          * avr-tre
+          */
+         else if( ((x < pal.length()-3 ) && (verificar(pal.charAt(x+1),"aeiouéáíóú",0,false) == false) &&
+                 (verificar(pal.charAt(x+2),"aeiouéáíóú",0,false) == false) && (verificar(pal.charAt(x+3),"aeiouéáíóú",0,false) == false) ) ||
+                  ((x < pal.length()-3 ) && (verificar(pal.charAt(x-1),"aeiouéáíóú",0,false) == false) &&
+                  (verificar(pal.charAt(x+1),"aeiouéáíóú",0,false) == false) && (verificar(pal.charAt(x+2),"aeiouéáíóú",0,false) == false)) ){
+           silabas += pal.charAt(x);
+         }
+         else { 
+           silabas += "-"+pal.charAt(x);
+         }
+       } 
+       return sacarSilabas(pal, silabas,++x);
+     }
+  }
+
+  
+   
+  
+	public String sacarAcento(String silabas, int cant){
+		String acento = "";
+		if( (cant >= 3) && ((verificarEsdrujula(silabas,cant-2) == true)) ){
+      
+			acento = "esdrujula";
+		}
+		else if(verificar(silabas.charAt(silabas.length()-1),"aeiouéáíóúns",0,false) == true ){
+			acento = "aguda";
+		}
+		else{
+			acento = "grave";
+		}
+		return acento;
+	}
+  
+  
+  
+	public boolean verificarEsdrujula(String silabas, int posicion){
+		boolean cumple = false;
+		int cant = 1;
+		for(int x = 0; x < silabas.length(); x++){
+			if(cant == posicion){
+				if(verificar(silabas.charAt(x),"éáíóú",0,false) == true){
+					cumple = true;
+					x = silabas.length();
+				}
+			}
+			else{
+				if(silabas.charAt(x) == '-'){
+					cant++;
+				}
+			}
+		}
+		return cumple;
+	}
+  
+	public int sacarCantSilabas(String silabas){
+		StringTokenizer tokens = new StringTokenizer(silabas,"-"); 
+		int cant =0; 
+		String silaba = "";
+		while(tokens.hasMoreTokens() ){// hasMoreTokens: Se encarga de buscar el caracter
+			silaba = tokens.nextToken();
+			cant++;
+		} 
+		return cant;
+	}
+
+	public boolean verificar(char letra,String cadena,int x,boolean pertenece){
+		if(x == cadena.length()) {
+			return pertenece;
+		}
+		else {
+			if( letra == cadena.charAt(x) ){
+				pertenece = true;
+			}
+			return verificar(letra,cadena,++x,pertenece);
+		}
+	}
+}

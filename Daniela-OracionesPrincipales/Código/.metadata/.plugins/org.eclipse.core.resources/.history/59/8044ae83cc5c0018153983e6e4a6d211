@@ -1,0 +1,52 @@
+package negocio;
+
+import dominio.ListaEnlazada;
+import dominio.Nodo;
+
+public class LogicaListaRaiz {
+	
+	public boolean vacia(ListaEnlazada lista){
+	    return lista.getPrimero() == null;
+	 }
+	
+	public boolean insertar(ListaEnlazada lista, String palabra){
+	    boolean inserto = false;
+	    Nodo nodo = new Nodo(palabra);
+	    
+	    if(vacia(lista)){
+	      lista.setPrimero(nodo);
+	      lista.setUltimo(nodo);
+	      inserto = true;
+	    }
+	    else{
+
+	      lista.getUltimo().setEnlace(nodo);
+	      lista.setUltimo (nodo);
+	      
+	      inserto = true;
+	    }
+	    lista.setCantNodos();
+	    return inserto;
+	  }
+	
+	
+	
+	
+	public String imprimirTodo(ListaEnlazada lista, String salto){  	  
+		  
+		  String salida ="";
+		  int num = 1;
+		  if(vacia(lista)) {
+			  salida = "La lista se encuentra vacia";
+		  }else {
+			  Nodo temporal =lista.getPrimero();
+			 while(temporal != null) {
+				 salida += num+"- "+temporal+salto;
+				 temporal = temporal.getEnlace();
+				 num++;
+			 } 
+		  }
+		  return salida;
+	  }
+
+}

@@ -1,0 +1,41 @@
+package negocio;
+
+import presentacion.*;
+import datos.Archivo;
+import dominio.*;
+
+public class ControladoraPrincipal {
+	
+	Fichero fichero;
+	Palabra palabra;
+	
+	ControladoraGUIDocumento cGUID;
+	ControladoraGUIOoracionP cOP;
+
+	LogicaGUI logD;
+	Archivo arch;
+	GUIOracionPrincipal guiP;
+	
+	ListaEnlazada listaP;
+	LogicaListaPalabras logP;
+	
+	public ControladoraPrincipal(){
+		
+		controlador();
+	}
+	
+	public void controlador() {
+		fichero = new Fichero();
+		guiP = new GUIOracionPrincipal();
+		arch = new Archivo();
+		logD = new LogicaGUI();
+		
+		logP = new LogicaListaPalabras();
+		
+		
+		cGUID = new ControladoraGUIDocumento(fichero,guiP,arch,logD,logP);
+		cOP = new ControladoraGUIOoracionP(fichero,guiP,arch,logD,logP);
+	
+	}
+}
+

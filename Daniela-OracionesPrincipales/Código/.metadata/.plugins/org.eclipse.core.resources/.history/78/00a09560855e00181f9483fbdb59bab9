@@ -1,0 +1,300 @@
+package negocio;
+
+/*
+ * Obtiene las palabras del texto y las agrega a una lista
+ *  
+ * Tarea Programada del curso Algoritmos y Estructura de Datos de la Unuversidad de Costa Rica
+ * @version  2.0  Mayo 2018
+ * @author  Daniela Montero
+ */
+
+import java.util.StringTokenizer;
+
+import dominio.*;
+
+public class LogicaListaPalabras {
+	
+	
+	/*
+	 * Se encarga de obtener las palabras de la cadena informacion ademas de llamar al metodo que 
+	 * agrega lasa palabras a la lista enlazada, para agregar palabras se debe cumplis con la condicion
+	 * que se encuentra en el metodo verificar.Cuando se agrega una palabra sus caracteres pasan a minuscula
+	 * */
+	public void obtenerPalabras(String informacion,ListaEnlazada listaP) {
+		String palabra = "";
+		StringTokenizer tokens = new StringTokenizer(informacion);
+	    	    
+	    while(tokens.hasMoreTokens() ){// hasMoreTokens: Se encarga de buscar espacios
+	    	palabra = tokens.nextToken();//tokens.nextToken():  Agarra cada palabra 
+	    	if(verificar(palabra) == true) {
+	    		insertar(listaP,palabra.toLowerCase());
+	    	}
+	    }
+	}
+	/*
+	 *verifica si la palabra cumple con los requisitos para ser insertada
+	 * */
+	public boolean verificar(String palabra) {
+		boolean cumple = false;
+		if(palabra.length() < 24 && palabra.length() > 3) {
+			cumple = true;
+		}
+		return cumple;
+	}
+	
+	
+	
+	public boolean vacia(ListaEnlazada lista){
+	    return lista.getPrimero() == null;
+	  }
+
+	/*
+	 * inserta la palabra a la lista
+	 * */
+	public boolean insertar(ListaEnlazada lista, String palabra){
+	    boolean inserto = false;
+	    Nodo nodo = new Nodo(palabra);
+	    
+	    if(vacia(lista)){
+	      lista.setPrimero(nodo);
+	      lista.setUltimo(nodo);
+	      inserto = true;
+	    }
+	    else{
+
+	      lista.getUltimo().setEnlace(nodo);
+	      lista.setUltimo (nodo);
+	      
+	      inserto = true;
+	    }
+	    lista.setCantNodos();
+	    return inserto;
+	  }
+	
+	
+	
+	/*
+	 * imprie el contenido de la lista
+	 * */
+	public String imprimirTodo(ListaEnlazada lista, String salto){  	  
+		  
+		  String salida ="";
+		  int num = 1;
+		  if(vacia(lista)) {
+			  salida = "La lista se encuentra vacia";
+		  }else {
+			  Nodo temporal =lista.getPrimero();
+			 while(temporal != null) {
+				 salida += num+"- "+temporal+salto;
+				 temporal = temporal.getEnlace();
+				 num++;
+			 } 
+		  }
+		  return salida;
+	  }
+	
+	
+//------------------------------------Clasificacion de palabras----------------------
+	/*
+	 * puede interpretarse como el metodo principal de los que le sigue hacia abajo.
+	 * primero llama a diferentes metodos para clasificar las  palabras en grave, agudas y esdrujulas,
+	 * llama al metodo que hace la division silavica. Todo lo guarda en la clase  Palabras, del archivo dominio
+	 * */
+	public void clasificarPalabras(ListaEnlazada lista, Palabra palabras){ 
+		  
+		String agudas = "";
+		String graves = "";
+		String esdrujulas = "";
+		int pos = 1;	  
+		Nodo temporal =lista.getPrimero();	
+		while(temporal != null) {
+			if(verificarRepeticion(temporal, lista, pos) == false){
+				String palabra = temporal.toString().trim();
+				
+				String silabas = sacarSilabas(palabra,palabra.charAt(0)+"",1);
+				int acento = sacarAcento(silabas,sacarCantSilabas(silabas));  
+				if(acento == 1) {
+					esdrujulas += palabra+"\n";
+				}
+				else if(acento == 2) {
+					agudas += palabra+"\n";
+				}
+				else {
+					graves += palabra+"\n";
+				}
+			}
+			//System.out.println(silabas);
+			temporal = temporal.getEnlace();
+			pos++;
+		}
+		
+		palabras.setesdrujulas(esdrujulas);
+		palabras.setagudas(agudas);
+		palabras.setgraves(graves);
+	}
+	
+	
+	/*
+	 * Evita lass repeticiones de las palabras de la lista, evita que la clasificacion 
+	 * contenga palabras repetidas
+	 * */
+	public boolean verificarRepeticion(Nodo palabra,ListaEnlazada lista,int pos) {
+		boolean repetida = false;
+		Nodo temporal = lista.getPrimero();
+		int cant = 1;
+		if(pos != 1) {
+			while(cant < pos) {
+				if(temporal == palabra) {
+					repetida = true;
+					cant = pos;
+				}
+				else {
+					temporal = temporal.getEnlace();
+					cant++;
+				}
+			}
+		}
+		return repetida;
+	}
+	
+	
+	/*
+	 * LLama diferentes metodos para lograr la division, ademas de sacar hiatos y diptongos
+	 * */
+	public String sacarSilabas(String pal, String silabas,int x){
+        /*
+         * Si la letra anterior es una consonante y la actual tambien
+         * si es la ultima letra
+         */
+    if(x == pal.length()){
+      return silabas;
+    }else{  
+    	if( (x == pal.length()-1) || (verificarContenido(pal.charAt(x),"aeiouéáíóú",0,false) == true) ){
+          /*
+           *Hiatos 
+           * Diptongos
+           */
+          if((verificarContenido(pal.charAt(x),"aeiouéáíóú",0,false) == true) && (verificarContenido(pal.charAt(x-1),"aeiouéáíóú",0,false) ==true) ){
+            silabas += "-"+pal.charAt(x);
+          }
+          else{  
+            silabas += pal.charAt(x); 
+          }
+       }
+       else{//Si es una consonante
+    	   
+    	   if(verificarContenido(pal.charAt(pal.length()-1),"aeiouéáíóú",0,false) == false) {
+    		   silabas += pal.charAt(x);
+    	   }
+
+    	   else if( pal.charAt(x) == pal.charAt(x-1) ){//Si son iguales se separan
+    		   silabas += pal.charAt(x);
+    	   }
+       
+    	   if(verificarContenido(pal.charAt(x),"hlr",0,false) == true){
+    		   if( ((pal.charAt(x) == 'r') && (verificarContenido(pal.charAt(x-1),"bcdfgkpqtvz",0,false) == true) )||
+    				   ((pal.charAt(x) == 'l') && (verificarContenido(pal.charAt(x-1),"bcdfgkpqtvz",0,false) == true)) ||
+    				   ((pal.charAt(x) == 'h') && (pal.charAt(x-1) == 'c')) ){
+    			   silabas += pal.charAt(x); 
+    		   }
+    		   else{
+    			   silabas += "-"+pal.charAt(x);
+    		   }
+    	   }
+         //se separan dos consonantes entre dos vocales se separan, r y l se toman como vocal    
+         else if( (x < pal.length()-2 ) && (verificarContenido(pal.charAt(x-1),"aeiouéáíóú",0,false) == true) && 
+                      (verificarContenido(pal.charAt(x+1),"aeiouéáíóú",0,false) == false) && (verificarContenido(pal.charAt(x+2),"aeiouéáíóúlr",0,false)) ){
+           silabas += pal.charAt(x);
+         }
+         /*
+          * Cuando hay cuatro consonantes entre vocales, las primeras dos se unen a la primera vocal y
+          * las otras dos se unen a la segunda vocal
+          * avr-tre
+          */
+         else if( ((x < pal.length()-3 ) && (verificarContenido(pal.charAt(x+1),"aeiouéáíóú",0,false) == false) &&
+                 (verificarContenido(pal.charAt(x+2),"aeiouéáíóú",0,false) == false) && (verificarContenido(pal.charAt(x+3),"aeiouéáíóú",0,false) == false) ) ||
+                  ((x < pal.length()-3 ) && (verificarContenido(pal.charAt(x-1),"aeiouéáíóú",0,false) == false) &&
+                  (verificarContenido(pal.charAt(x+1),"aeiouéáíóú",0,false) == false) && (verificarContenido(pal.charAt(x+2),"aeiouéáíóú",0,false) == false)) ){
+           silabas += pal.charAt(x);
+         }
+         else { 
+           silabas += "-"+pal.charAt(x);
+         }
+       } 
+       return sacarSilabas(pal, silabas,++x);
+     }
+  }
+
+  
+   
+  /*
+   * llama a los metodos que verifican si la palabra es grave, esdrujula, o aguda
+   * */
+	public int sacarAcento(String silabas, int cant){
+		int acento = 0;
+		
+		if( (cant >= 3) && ((verificarEsdrujula(silabas,cant-2) == true)) ){
+			acento = 1;
+		}
+		else if( (verificarContenido(silabas.charAt(silabas.length()-1),"aeiouéáíóúns",0,false) == true) || 
+				(verificarContenido(silabas.charAt(silabas.length()-2),"éáíóú",0,false) == true)) {
+			acento = 2;
+		}
+		else{
+			acento = 3;
+		}
+		return acento;
+	}
+  
+  
+  /*
+   * En la antepenultima posicion revisa si existe tilde, si las hay entonces la palabra es esdrujula
+   * */
+	public boolean verificarEsdrujula(String silabas, int posicion){
+		boolean cumple = false;
+		int cant = 1;
+		for(int x = silabas.length()-1; x >= 0; x--){
+			if(cant == posicion+1){
+				if(verificarContenido(silabas.charAt(x),"éáíóú",0,false) == true){
+					cumple = true;
+					x = silabas.length();
+				}
+			}
+			else{
+				if(silabas.charAt(x) == '-'){
+					cant++;
+				}
+			}
+		}
+		return cumple;
+	}
+  /*
+   * Saca la cantidad de silavas de cada palabra
+   * */
+	public int sacarCantSilabas(String silabas){
+		StringTokenizer tokens = new StringTokenizer(silabas,"-"); 
+		int cant =0; 
+		String silaba = "";
+		while(tokens.hasMoreTokens() ){// hasMoreTokens: Se encarga de buscar el caracter
+			silaba = tokens.nextToken();
+			cant++;
+		} 
+		return cant;
+	}
+	
+	/*
+	 *Metodo recursivo que verifica la existencia de algun caracter en la palabra 
+	 * */
+
+	public boolean verificarContenido(char letra,String cadena,int x,boolean pertenece){
+		if(x == cadena.length()) {
+			return pertenece;
+		}
+		else {
+			if( letra == cadena.charAt(x) ){
+				pertenece = true;
+			}
+			return verificarContenido(letra,cadena,++x,pertenece);
+		}
+	}
+}

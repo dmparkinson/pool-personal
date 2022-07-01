@@ -1,0 +1,114 @@
+package negocio;
+
+import dominio.ListaEnlazada;
+import dominio.Nodo;
+
+public class LogicaListaRaiz {
+	
+	public boolean vacia(ListaEnlazada lista){
+	    return lista.getPrimero() == null;
+	 }
+	
+	/*
+	 * verifica si la palabra actual de la lista de palabras ya se ingreso,
+	 * sino entonces se saca la raiz.Luego se llama al metodo insertar
+	 * */
+	public void obtenerPalabras(ListaEnlazada lista,ListaEnlazada lPalabras){
+	
+		Nodo palabra =lPalabras.getPrimero();
+		while(palabra != null) {
+			if(coinciden(palabra,lPalabras) == false) {
+				insertar(lista,obtenerRaiz(palabra));
+			}
+			palabra = palabra.getEnlace();
+		}
+	}
+	
+	public void busquedaCoincidencias(ListaEnlazada listaRaiz,ListaEnlazada lcoincidencias,ListaEnlazada listaP,int pos){
+	
+		String raiz = (obtenerRaizAUtilizar(listaRaiz,pos).toString()).trim(); 
+		Nodo palabra =listaP.getPrimero();
+		while(palabra != null) {
+			if(obtenerRaiz(palabra) == (raiz)) {
+				if(coinciden(palabra,listaP) == true){
+					lcoincidencias.setCantNodos();
+				}
+				else {
+					insertar(lcoincidencias,(palabra.toString()).trim());
+				}
+			}
+			palabra = palabra.getEnlace(); 
+		}
+	}
+	
+
+	    
+	    public void insertar(ListaEnlazada lista, String palabra){
+		    Nodo nodo = new Nodo(palabra);
+		    
+		    if(vacia(lista)){
+		      lista.setPrimero(nodo);
+		      lista.setUltimo(nodo);
+		      lista.setCantNodos();
+		    }
+		    else{
+		      lista.getUltimo().setEnlace(nodo);
+		      lista.setUltimo (nodo);
+		    }
+		    lista.setCantNodos();
+		  }
+	    
+
+	
+	
+	public String imprimirTodo(ListaEnlazada lista, String salto){  	  
+		  
+		  String salida ="";
+		  int num = 1;
+		  if(vacia(lista)) {
+			  salida = "La lista se encuentra vacia";
+		  }else {
+			  Nodo temporal =lista.getPrimero();
+			 while(temporal != null) {
+				 salida += num+" -"+temporal+salto;
+				 temporal = temporal.getEnlace();
+				 num++;
+			 } 
+		  }
+		  return salida;
+	  }
+
+	
+	public boolean coinciden(Nodo palabra,ListaEnlazada lista) {
+		boolean iguales = false;
+		
+		Nodo temporal = lista.getPrimero();
+		Nodo palTemporal=null; 
+		 while(temporal != null) {
+			 palTemporal = temporal;
+			 if(palabra.equals(palTemporal) ) {
+				 iguales = true;
+				 temporal = null;
+			 }
+			 else {
+				 temporal = temporal.getEnlace(); 
+			 }
+		 }
+		 return iguales;
+	}
+	
+	
+	public String obtenerRaiz(Nodo palabra) {
+		return ((palabra.toString()).trim()).substring(0,4);
+	}
+	
+	public Nodo obtenerRaizAUtilizar(ListaEnlazada listaRaiz,int pos) {
+		Nodo utilizar = listaRaiz.getPrimero();
+		if(pos > 1) {
+			for(int cant = 2; cant < pos; cant++) {
+				utilizar = utilizar.getEnlace();
+			}
+		}
+		return utilizar;
+	}
+}

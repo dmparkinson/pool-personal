@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="javax.swing.JButton"/>
+<fullyQualifiedTypeName name="negocio.LogicaOracionPrincipal"/>
+<fullyQualifiedTypeName name="dominio.ListaPalabras"/>
+<fullyQualifiedTypeName name="negocio.LogicaListaRaiz"/>
+<fullyQualifiedTypeName name="negocio.LogicaBusquedaPalabras"/>
+<fullyQualifiedTypeName name="javax.swing.JComboBox"/>
+<fullyQualifiedTypeName name="javax.swing.JScrollBar"/>
+<fullyQualifiedTypeName name="javax.swing.JScrollPane"/>
+<fullyQualifiedTypeName name="javax.swing.JTextField"/>
+<fullyQualifiedTypeName name="java.util.Vector"/>
+<fullyQualifiedTypeName name="java.awt.event.ItemListener"/>
+<fullyQualifiedTypeName name="java.awt.event.ItemEvent"/>
+<fullyQualifiedTypeName name="dominio.Fichero"/>
+<fullyQualifiedTypeName name="dominio.Palabra"/>
+<fullyQualifiedTypeName name="datos.Archivo"/>
+<fullyQualifiedTypeName name="dominio.ListaEnlazada"/>
+<fullyQualifiedTypeName name="java.io.File"/>
+</qualifiedTypeNameHistroy>

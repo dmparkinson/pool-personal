@@ -1,0 +1,113 @@
+package presentacion;
+
+/*
+ * Interfaz principal del programa
+ *  
+ * Tarea Programada del curso Algoritmos y Estructura de Datos de la Unuversidad de Costa Rica
+ * @version  2.0  Mayo 2018
+ * @author  Daniela Montero
+ */
+
+import java.awt.Color;
+
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JTextField;
+
+
+public class GUIDocumento extends JFrame{
+
+	private JTextField tfBusqueda;
+	
+	private JButton bSeleccionar;
+
+	private JComboBox cxArchivos;
+	private JButton bBuscar;
+	public String vectorEstilo[] = {"holaa","holaa","holaa","holaa","holaa","holaa","holaa","holaa"}; 
+	
+	private JButton bx;
+	
+	
+	public GUIDocumento() {
+		
+		setBSeleccionar();
+		setTFBusqueda();
+		setBuscar();
+		setCXarchivos(vectorEstilo);
+		setBx();
+		
+		add(bBuscar);
+		add(tfBusqueda);
+		add(cxArchivos);
+	    add(bSeleccionar);
+		add(bx);
+		
+		inicializador();
+	}
+	
+	public void inicializador() {
+		setVisible(true);
+		setTitle("Seleccionar archivo");
+		setSize(450, 450);
+		setLayout(null);
+		setAlwaysOnTop(true);
+	    setLocationRelativeTo(null);
+	    setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		
+	}
+
+	
+	
+	private void setBSeleccionar(){
+		bSeleccionar= new JButton("Continuar");
+		bSeleccionar.setBounds(310,340,110,25);
+	}
+	private void setBuscar() {
+		bBuscar = new JButton("Buscar");
+		bBuscar.setVisible(false);
+		bBuscar.setBounds(380,90,100,25);
+	}
+	
+	
+	public JButton getBSeleccionar(){
+		return bSeleccionar;
+	}
+	
+	private void setBx(){
+		bx= new JButton("Error");
+		bx.setBounds(180,140,110,25);
+		bx.setVisible(false);
+		bx.setEnabled(false);
+	}
+	private void setTFBusqueda() {
+		tfBusqueda = new JTextField();
+		tfBusqueda.setVisible(false);
+		tfBusqueda.setBounds(130,90,240,25);
+	}
+	
+	
+	private void setCXarchivos(String vectorEstilo[]){
+	    cxArchivos = new JComboBox(vectorEstilo);
+	    cxArchivos.setBounds(10,40,430,20);
+	 	  }
+
+	  
+	  public JComboBox getCXarchivos(){
+	    return cxArchivos;
+	  }
+	  
+	
+	
+	  public JButton getBx(){
+		return bx;
+    	}
+	  public JButton getBBuscar() {
+		  return bBuscar;
+	  }
+	  public JTextField getTFBuscar() {
+		  return tfBusqueda;
+	  }
+	  
+}
+

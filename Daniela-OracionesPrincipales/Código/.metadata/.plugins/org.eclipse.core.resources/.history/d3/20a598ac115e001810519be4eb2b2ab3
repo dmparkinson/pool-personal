@@ -1,0 +1,96 @@
+package negocio;
+
+/*
+ *Controla la GUIDocumento ademas de encargarse del llamado de los metodos necesarios para la conversion de html a txt  
+ * Tarea Programada del curso Algoritmos y Estructura de Datos de la Unuversidad de Costa Rica
+ * @version  2.0  Mayo 2018
+ * @author  Daniela Montero
+ */
+
+import datos.*;
+import dominio.*;
+import presentacion.GUIDocumento;
+import presentacion.GUIOracionPrincipal;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+
+public class ControladoraGUIDocumento implements ActionListener{
+	
+	GUIDocumento gui;
+	SelectorArchivo sArch;
+	Archivo arch;
+	LogicaGUI log;
+	Fichero direccion;
+	GUIOracionPrincipal guiP;
+		
+	LogicaListaPalabras logP;
+	
+	private String ruta;
+	 
+	public ControladoraGUIDocumento(Fichero fichero,GUIOracionPrincipal guiP,Archivo arch,LogicaGUI logD, 
+			                         LogicaListaPalabras logP) {
+		this.arch = arch;
+		this.guiP = guiP;
+		this.logP = logP;
+		direccion = fichero;
+		log = logD;
+	
+		gui = new GUIDocumento();
+	
+		setRuta();
+		
+		
+		inicializadorAcciones();
+	}
+
+
+	public void inicializadorAcciones() {
+		gui.getBBuscar().addActionListener(this);
+		gui.getBContinuar().addActionListener(this);
+		gui.getBGenerar().addActionListener(this);
+	}
+	
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource() == gui.getBBuscar()) {
+			
+			sArch = new SelectorArchivo();
+			gui.setAlwaysOnTop(false);
+			gui.getTXRuta().setText("src/ficheros/html/15 mascarillas caseras para el cabello |Tratamientos.html");	
+		}
+		
+		if(e.getSource() == gui.getBGenerar()) {
+			gui.getBContinuar().setEnabled(true);
+			gui.getBBuscar().setEnabled(false);
+			gui.getBGenerar().setEnabled(false);			
+			
+			String texto = log.obtenerTexto(arch.leerArchivo("src/ficheros/html/15 mascarillas caseras para el cabello |Tratamientos.html"),"\\<p[^\\>]*\\>p","");			
+			
+			direccion.setEtiqueta(arch.obtenerEtiqueta("src/ficheros/html/15 mascarillas caseras para el cabello |Tratamientos.html"));
+			direccion.setDireccion("src/ficheros/archivos de texto/"+direccion.getEtiqueta()+".txt");
+			arch.guardarArchivo(texto.replaceAll(" +", " ").trim(),direccion);
+			System.out.print(texto);
+		}
+		if(e.getSource() == gui.getBContinuar()) {
+			
+			
+			guiP.getLEtiqueta().setText(direccion.getEtiqueta());
+			
+			gui.setVisible(false);		
+			guiP.setVisible(true);
+		
+		}
+	}
+	
+	
+	private void setRuta() {
+		ruta = null;
+	}
+
+	public String getRuta() {
+		return ruta;
+	}
+	
+
+}
