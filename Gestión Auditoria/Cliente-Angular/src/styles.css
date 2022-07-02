@@ -1,0 +1,63 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import url("sweetalert2/dist/sweetalert2.min.css");
+
+html, body{
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+
+.body-personal{
+    background-color: #EEEEF4 !important;
+    margin: 0px;
+    padding: 0px;
+}
+
+.pulse-icon {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+}
+
+.div-table{
+    margin-bottom: 5em;
+}
+
+.row{
+    margin: 0px;
+    padding: 0px;
+}
+
+.nopadding{
+    padding: 0px !important;
+}
+
+.background-base{
+   /* background-color: #342482;*/
+   background: rgb(12,8,87);
+   background: linear-gradient(90deg, rgba(12,8,87,1) 0%, rgba(36,41,130,1) 42%, rgba(43,71,136,1) 100%);
+}
+
+.color-base{
+    color: #342482;
+}
+
+.btn-base{
+    background-color: #342482;
+    border-color: #342482;
+    color: white;
+}
+.btn-base:hover{
+    color: #342482;
+}
+
+.borderTable{
+    border-bottom: red;
+    border-width: 10px;;
+  border-width: 5px;
+}

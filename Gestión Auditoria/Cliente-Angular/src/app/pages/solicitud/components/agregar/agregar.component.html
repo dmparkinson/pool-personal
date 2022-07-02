@@ -1,0 +1,55 @@
+
+<button type="button" class="btn btn-sm btn-primary" (click)="abrirmodalAgregar(modalAgregar)" data-placement="top">+ agregar</button>
+
+<ng-template #modalAgregar let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">{{title}}</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            <div>
+                <div class="form-group">
+                    <label for="alias">Alias solicitud</label>
+                    <input type="text" class="form-control" [(ngModel)] = "solicitud.alias">
+                </div>
+                <div class="form-group">
+                    <label for="responsable">Responsable</label>
+                    <select class="form-control" name="responsable" [(ngModel)]="solicitud.responsable">
+                        <option [value]="f.id_funcionario" *ngFor="let f of funcionarios">{{f.nombre}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="uAplicativo">Usuario Aplicativo</label>
+                    <select class="form-control" name="uAplicativo" [(ngModel)]="solicitud.usuarioAplicativo">
+                        <option [value]="f.id_funcionario" *ngFor="let f of funcionarios">{{f.nombre}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="resUsuarioFinal">Responsable usuario final</label>
+                    <select class="form-control" name="resUsuarioFinal" [(ngModel)]="solicitud.responsableUsuarioFinal">
+                        <option [value]="f.id_funcionario" *ngFor="let f of funcionarios">{{f.nombre}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="fechaInit">Fecha de inicio</label>
+                    <input type="date" class="form-control" [(ngModel)] = "solicitud.fechaInicio">
+                </div>
+                <div class="form-group">
+                    <label for="fechaFin">Fecha final</label>
+                    <input type="date" class="form-control" [(ngModel)] = "solicitud.fechaFin">
+                </div>
+                <div class="form-group">
+                    <label for="documento">Documento(Opcional)</label>
+                    <input type="file" accept=".pdf,.doc,.docx" class="form-control-file" id="customFile" (change)="onChangeFile($event)">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-light btn-base mr-1" (click)="agregarSolicitud()" >Aceptar</button>
+        <button class="btn btn-secondary" type="reset" (click)="resetForm(modalAgregar)">Cerrar</button>
+    </div>
+</ng-template>

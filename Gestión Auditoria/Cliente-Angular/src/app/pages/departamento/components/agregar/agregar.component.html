@@ -1,0 +1,25 @@
+
+<button type="button" class="btn btn-sm btn-primary" (click)="abrirmodalAgregar(modalAgregar)" data-placement="top">+ agregar</button>
+
+<ng-template #modalAgregar let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">{{title}}</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            <div>
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" class="form-control" placeholder="Ingresar nombre" [(ngModel)] = "departamento.nombre" >
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-light btn-base mr-1" (click)="registrarDepartamento()" >Aceptar</button>
+        <button class="btn btn-secondary" type="reset" (click)="resetForm(modalAgregar)">Cerrar</button>
+    </div>
+</ng-template>

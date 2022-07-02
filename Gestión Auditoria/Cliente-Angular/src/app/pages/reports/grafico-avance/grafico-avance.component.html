@@ -1,0 +1,35 @@
+<body class="body-personal">
+
+    <app-header></app-header>
+    
+    <div class="row">
+        <div class="col-2 nopadding">
+            <app-menu></app-menu>
+        </div>
+        <div>
+            <ul *ngFor="let s of solicitudes">
+                <li>{{s}}</li>
+            </ul>
+        </div>
+    
+        <div class="col-10 pl-5 div-table">
+            <h2>{{title}}</h2>
+            <hr>
+            <p>{{description}}</p>
+            <div>
+            </div>  
+            <div class="mb-4"> <!-- style="display: block">  -->
+                <canvas baseChart
+                    [data]="datasets"
+                    [labels]="labels"
+                    [legend]="true"
+                    [options]="chartOptions"
+                    [chartType]="chartType">
+                </canvas>
+            </div>
+        </div>
+    </div>
+    <app-footer></app-footer>
+</body>
+    
+    

@@ -1,0 +1,35 @@
+    
+<body class="background-base">
+    <div class="row">
+        <div class="col-sm-5 imgContainer">
+            <img class="img-responsive imgContainer" src="assets/img/login-ico.png" alt="logo">
+        </div>
+        <div class="container">
+            <div class="vh-100 row justify-content-end align-items-center">
+                <div class="col-auto">
+                    <svg><rect ></rect></svg>
+                    <div class="col-auto mt-4 mb-4 text-center text-light">
+                        <div class="card-body color-border">
+                        <div class="card-header transparente">
+                            <h2>{{title}}</h2>
+                            </div>
+                            <form [formGroup]="formLogin" (ngSubmit)="login()" novalidate>
+                                <div class="input-field">
+                                    <i-bs class="text-light fa-2x " name="person-fill"></i-bs>
+                                    <input type="text" class="input-login" placeholder="Ingresar usuario" formControlName="logname">
+                                </div>
+                                <div class="input-field">
+                                    <i-bs class="text-light fa-2x " name="lock-fill"></i-bs>
+                                    <input type="password" class="input-login" placeholder="Ingresar contraseña" formControlName="passw" >
+                                </div>
+                                <div class="justify-content-center mt-3">
+                                    <button class="btn btn-outline-light" >Aceptar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+</body>

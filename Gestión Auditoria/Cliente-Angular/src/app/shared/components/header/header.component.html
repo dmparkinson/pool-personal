@@ -1,0 +1,20 @@
+
+<div class="d-flex flex-row justify-content-between mb-4 navbar">
+  <div>
+    <img class="img-responsive"  width="110" height="60" src="assets/img/Logo-Transparente.png" alt="logo">
+  </div>
+  <div class="usser-container d-flex justify-content-end background-base">
+    <div class="nav-item dropdown">
+      <button class="nav-link dropdown-toggle pulse-icon text-muted" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i-bs name="person-circle" class=" text-light" width="40" height="40"></i-bs>
+      </button>
+      <div class="dropdown-menu dropdown-menu-right pulse-icon" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item nav-link btnLogOut color-base" [routerLink]="['/perfil']" >
+            <i-bs name="person-fill" width="20"height="20"></i-bs> Perfil</a>
+        <a class="dropdown-item btnLogOut pulse-icon color-base" (click)="logOut()"> 
+            <i-bs name="door-open-fill " width="20" height="20"></i-bs> Cerrar Sesión</a>
+      </div>
+    </div>  
+  </div>
+</div>
+

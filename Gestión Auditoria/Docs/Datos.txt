@@ -1,0 +1,42 @@
+-- Departamentos
+INSERT INTO Informatica_Aplicada.dbo.Departamento(nombre, eliminado)VALUES('Sistemas', 0)
+INSERT INTO Informatica_Aplicada.dbo.Departamento(nombre, eliminado)VALUES('Recursos Humanos', 0)
+INSERT INTO Informatica_Aplicada.dbo.Departamento(nombre, eliminado)VALUES('Financiero', 0)
+INSERT INTO Informatica_Aplicada.dbo.Departamento(nombre, eliminado)VALUES('Marketing', 0)
+INSERT INTO Informatica_Aplicada.dbo.Departamento(nombre, eliminado)VALUES('Comercial', 0)
+INSERT INTO Informatica_Aplicada.dbo.Departamento(nombre, eliminado)VALUES('Compras', 0)
+INSERT INTO Informatica_Aplicada.dbo.Departamento(nombre, eliminado)VALUES('Logística y Operaciones', 0)
+INSERT INTO Informatica_Aplicada.dbo.Departamento(nombre, eliminado)VALUES('Control de Gestión', 0)
+INSERT INTO Informatica_Aplicada.dbo.Departamento(nombre, eliminado)VALUES('Comité de Dirección', 0)
+INSERT INTO Informatica_Aplicada.dbo.Departamento(nombre, eliminado)VALUES('General', 0)
+
+
+--Trimestre
+INSERT INTO Informatica_Aplicada.dbo.Trimestre(descripcion)VALUES('Primero')
+INSERT INTO Informatica_Aplicada.dbo.Trimestre(descripcion)VALUES('Segundo')
+INSERT INTO Informatica_Aplicada.dbo.Trimestre(descripcion)VALUES('Tercero')
+
+--Funcionario
+INSERT INTO Informatica_Aplicada.dbo.Funcionario
+(nombre, fecha_nacimiento, id_sexo, foto, id_departamento, logname, contraseña, eliminado)
+VALUES('Sandra Wilmonth', '1973-10-13T12:41:00', 1, '', 3, 'sandra', 'sandra', 0)
+INSERT INTO Informatica_Aplicada.dbo.Funcionario
+(nombre, fecha_nacimiento, id_sexo, foto, id_departamento, logname, contraseña, eliminado)
+VALUES('Adriana Cruz', '1989-10-01T12:41:00', 1, '', 2, 'adriana', 'adriana', 0)
+INSERT INTO Informatica_Aplicada.dbo.Funcionario
+(nombre, fecha_nacimiento, id_sexo, foto, id_departamento, logname, contraseña, eliminado)
+VALUES('Carlos Castaño', '1979-12-13T12:41:00', 2, '', 4, 'carlos', 'carlos', 0)
+INSERT INTO Informatica_Aplicada.dbo.Funcionario
+(nombre, fecha_nacimiento, id_sexo, foto, id_departamento, logname, contraseña, eliminado)
+VALUES('Carolina Hernández', '1993-07-13T12:41:00', 1, '', 5, 'carolina', 'carolina', 0)
+INSERT INTO Informatica_Aplicada.dbo.Funcionario
+(nombre, fecha_nacimiento, id_sexo, foto, id_departamento, logname, contraseña, eliminado)
+VALUES('Diego Quesada', '1990-10-03T12:41:00', 2, '', 6, 'diego', 'diego', 0)
+INSERT INTO Informatica_Aplicada.dbo.Funcionario
+(nombre, fecha_nacimiento, id_sexo, foto, id_departamento, logname, contraseña, eliminado)
+VALUES('Fabian Calderin', '1986-11-13T12:41:00', 2, '', 7, 'fabian', 'fabian', 0)
+
+--Transaccion
+INSERT INTO Informatica_Aplicada.dbo.Transaccion(descripcion)VALUES('Registrar')
+INSERT INTO Informatica_Aplicada.dbo.Transaccion(descripcion)VALUES('Eliminar')
+INSERT INTO Informatica_Aplicada.dbo.Transaccion(descripcion)VALUES('Actualizar')

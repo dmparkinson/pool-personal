@@ -1,0 +1,88 @@
+<body class="body-personal">
+
+    <app-header></app-header>
+    
+    <div class="row ">
+        <div class="col-2 nopadding complete-heigth">
+            <app-menu></app-menu>
+        </div>
+    
+        <div class="col-10 pl-5 div-table">
+            <h2>{{title}}</h2>
+            <hr>
+            <div class="d-flex mb-2 justify-content-between">
+                <solicitud-agregar (flagReload)="reloadTable($event)"></solicitud-agregar>
+                <div>
+                    <span  id="basic-addon2">Fecha de Inicio</span>
+                    <input type="date" class="" aria-label="Recipient's username" aria-describedby="basic-addon2" [(ngModel)]="fechaDeInico">
+
+                    <span  id="basic-addon2">Fecha Final</span>
+                    <input type="date" class="" aria-label="Recipient's username" aria-describedby="basic-addon2" [(ngModel)]="fechaDefin">
+
+                    <button class="btn btn-sm btn-primary" (click)='filtrarSolicitudes()'>
+                        Filtrar
+                      </button>
+                      <button class="btn btn-sm btn-primary" (click)='listarSolicitud()'>
+                        Mostrar Todo
+                      </button>
+                </div>
+
+            </div>
+            <table datatable [dtOptions]="dtOptions" [dtTrigger]="tableTrigger" class="table table-striped table-bordered row-border table-hover" name ="table" id ="table">
+                <thead class="thead-light">
+                    <tr>
+                    <th>Alias</th>
+                    <th>Responsable</th>
+                    <th>Usuario aplicativo</th>
+                    <th>Responsable usuario final</th>
+                    <th>Fecha</th>
+                    <th>Inicio</th>
+                    <th>Final</th>
+                    <th>Estado</th>
+                    <th width="50">Documento</th>
+                    <th width="50">Reporte</th>
+                    <th width="100"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let s of solicitudes">
+                        <td>{{s.alias}}</td>
+                        <td>{{s.Usuario_Responsable}}</td>
+                        <td>{{s.Usuario_Aplicativo}}</td>
+                        <td>{{s.Usuario_Final}}</td>
+                        <td>{{s.fecha_hora |  date:'d/M/y' }}</td>
+                        <td>{{s.fecha_inicio | date:'d/M/y'  }}</td>
+                        <td>{{s.fecha_fin  | date:'d/M/y'  }}</td>
+                        <td>{{s.finalizado== 1 ? "Finalizado" : "Pendiente"}}</td>
+                        <td class="text-center">
+                            <button class="navMenu" class="pulse-icon" data-placement="top" title="ver documento" (click)="abrirFile( s.documento)">
+                                <i-bs class="text-muted" name="eye-fill" width="20" height="20"></i-bs>
+                            </button>
+                        </td>
+                        <td class="text-center">
+                            <a class="navMenu" class="pulse-icon" data-placement="top" title="Generar reporte" >
+                                <i-bs class="text-muted" name="clipboard-data" width="20" height="20" (click)="avanceTrimestral(s)"></i-bs>
+                            </a>     
+                        </td>
+                        <td class="text-center">
+                        <button class="navMenu" class="pulse-icon" data-placement="top" title="Editar solicitud" (click)="abrirmodalActualizar( modalActualizar, s.id_solicitud)">
+                            <i-bs class="text-muted" name="pencil-square" width="20" height="20"></i-bs>
+                        </button>
+                        <button type="button" class="pulse-icon" (click)="eliminarSolicitud(s.id_solicitud, s.id_usuario_aplicativo)" data-placement="top" title="Eliminar solicitud" >
+                            <i-bs class="text-muted"  name="trash-fill" width="20" height="20"></i-bs>
+                        </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <app-footer></app-footer>
+</body>
+
+
+
+<ng-template #modalActualizar let-modal>
+    <solicitud-actualizar [id]="id"  [solicitud]="solicitud" [funcionarios]="funcionarios" (flagReload)="reloadTable($event)"></solicitud-actualizar>
+</ng-template>
+

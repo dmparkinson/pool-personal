@@ -1,0 +1,33 @@
+<body class="body-personal">
+
+  <app-header></app-header>
+
+  <div class="row ">
+    <div class="col-2 nopadding complete-heigth">
+      <app-menu></app-menu>
+    </div>
+
+    <div class="col-10 pl-5 div-table " style="text-align: center">
+      <h2>Perfil de Usuario</h2>
+      <hr>
+
+      <div class="col-6 center-content">
+        <div> <img style="max-width: 300px;" src="{{funcionarioData.foto}}"></div>
+
+        <hr>
+        <h1 style="color: white;">{{funcionarioData.nombre}}</h1>
+
+        <hr>
+        <h2 style="color: white;">{{funcionarioData.departamento}}</h2>
+
+        <hr>
+        <h3 style="color: white;"> Fecha de nacimiento: {{funcionarioData.fechaNacimiento |date:'d-M-y'}}</h3>
+
+        <hr>
+        <h3 style="color: white;"> Nombre de Usuario: {{funcionarioData.logname }}</h3>
+
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</body>

@@ -1,0 +1,58 @@
+
+
+<!-- Editar avance-->
+
+
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">{{title}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="resetForm()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <div class="form-group">
+        <div>
+            <div class="form-group">
+                <label for="trimestre">Trimestre</label>
+                <select class="form-control" name="funcionario" [(ngModel)]="avance.trimestre">
+                    <option [value]="t.id_trimestre" *ngFor="let t of trimestres">{{t.descripcion}}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="solicitud">Solicitud</label>
+                <select class="form-control" name="funcionario" [(ngModel)]="avance.solicitud">
+                    <option [value]="s.id_solicitud" *ngFor="let s of solicitudes">{{s.alias}}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="funcionario">Funcionario</label>
+                <select class="form-control" name="funcionario" [(ngModel)]="avance.usuarioAplicativo">
+                    <option [value]="f.id_funcionario" *ngFor="let f of funcionarios">{{f.nombre}}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="documento">Visualizar Documento</label>
+                <br>
+                <button class="btn btn-info btn-sm"  data-placement="top" title="ver documento" (click)="abrirFile()">
+                    <i-bs class="text-light" name="eye-fill" width="20" height="20"></i-bs> Ver</button>
+            </div>
+            <div class="form-group">
+                <label for="documento">Seleccionar Documento(Opcional)</label>
+                <input type="file" accept=".pdf,.doc,.docx" class="form-control-file" id="customFile" (change)="onChangeFile($event)">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal-footer">
+    <button class="btn btn-light btn-base mr-1" (click)="editarAvance()" >Aceptar</button>
+    <button class="btn btn-secondary" type="reset" (click)="resetForm()">Cerrar</button>
+</div>
+
+
+
+
+
+
+

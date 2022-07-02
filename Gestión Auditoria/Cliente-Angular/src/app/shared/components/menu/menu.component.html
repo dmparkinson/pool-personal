@@ -1,0 +1,87 @@
+  
+<div class="container-nav background-base">
+    <nav class ="navbar  ">
+        <ul class ="nav navbar-nav mt-4">
+            <li class="menu-text">
+                <h4 class="text-light br-custom">Menú</h4>
+            </li>
+            <li class ="nav-item animate">
+                <a [routerLink]="['/avance']" class="nav-link">Avances</a>
+            </li>
+            <li class ="nav-item animate">
+                <a [routerLink]="['/solicitud']" class="nav-link">Solicitudes</a>
+            </li>
+            <li class ="nav-item">
+                <a class="nav-link pulse-icon " data-toggle="collapse" data-target="#reporte">
+                    Reportes <i-bs name="chevron-down" class=" text-light" width="17" height="17"></i-bs>
+                </a>
+                <div id="reporte" class="collapse">
+                    <ul class ="nav mt-4 submenu list-group">
+
+                        <li class ="nav-item animate">
+                            <a [routerLink]="['/reporte/grafico-solicitud']" class="nav-link">
+                                <i-bs name="caret-right-fill" class=" text-light" width="13" height="13"></i-bs>
+                                Gráfico solicitudes
+                            </a>
+                        </li>
+                        <li class ="nav-item animate">
+                            <a [routerLink]="['/reporte/grafico-avance']" class="nav-link">
+                                <i-bs name="caret-right-fill" class=" text-light" width="13" height="13"></i-bs>
+                                Gráfico avances
+                            </a>
+                        </li>
+                        <li class ="nav-item animate">
+                            <a [routerLink]="['/reporte/cambios-solicitud']" class="nav-link">
+                                <i-bs name="caret-right-fill" class=" text-light" width="13" height="13"></i-bs>
+                                Cambios en solicitudes
+                            </a>
+                        </li>
+                        <li class ="nav-item animate">
+                            <a [routerLink]="['/reporte/transaccion-bitacora']" class="nav-link" >
+                                <i-bs name="caret-right-fill" class=" text-light" width="13" height="13"></i-bs>
+                                Bitácora transacción
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class ="nav-item animate">
+                <a  class="nav-link">Cubo</a>
+            </li>
+            <li class ="nav-item">
+                <a class="nav-link pulse-icon " data-toggle="collapse" data-target="#demo">
+                    Mantenimiento <i-bs name="chevron-down" class=" text-light" width="17" height="17"></i-bs>
+                </a>
+                <div id="demo" class="collapse">
+                    <ul class ="nav mt-4 submenu list-group">
+                        <li class ="nav-item animate">
+                            <a [routerLink]="['/departamento']" class="nav-link">
+                                <i-bs name="caret-right-fill" class=" text-light" width="13" height="13"></i-bs>
+                                Departamentos
+                            </a>
+                        </li>
+                        <li class ="nav-item animate">
+                            <a [routerLink]="['/trimestre']" class="nav-link">
+                                <i-bs name="caret-right-fill" class=" text-light" width="13" height="13"></i-bs>
+                                Trimestre
+                            </a>
+                        </li>
+                        <li class ="nav-item animate">
+                            <a [routerLink]="['/funcionario']" class="nav-link" >
+                                <i-bs name="caret-right-fill" class=" text-light" width="13" height="13"></i-bs>
+                                Funcionario
+                            </a>
+                        </li>
+                        <li class ="nav-item animate">
+                            <a [routerLink]="['/transaccion']" class="nav-link" >
+                                <i-bs name="caret-right-fill" class=" text-light" width="13" height="13"></i-bs>
+                                Transacción
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </nav>
+</div>
+

@@ -1,0 +1,52 @@
+<body class="body-personal">
+
+    <app-header></app-header>
+    
+    <div class="row">
+        <div class="col-2 nopadding">
+            <app-menu></app-menu>
+        </div>
+    
+        <div class="col-10 pl-5 div-table">
+            <h2>{{title}}</h2>
+            <hr>
+
+
+            <div class="d-flex mb-2 justify-content-between">
+
+
+            </div>
+
+              <table datatable [dtOptions]="dtOptions" [dtTrigger]="tableTrigger" class="table table-striped table-bordered row-border hove" name ="table" id ="table">
+                <thead class="thead-light">
+                    <tr>
+                      <th></th>
+                      <th>Transaccion</th>
+                      <th>Usuario Aplicativo</th>
+                      <th>Nombre</th>
+                      <th>Solicitud </th>
+                      <th> Descripcion</th>
+                      <th> Fecha</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let t of transacciones; let i=index;">
+                    <td>{{ i+1 }}</td>
+                    <td>{{ t.transaccion  }}</td>
+                    <td>{{ t.usuarioAplicativo  }}</td>
+                    <td>{{ t.nombre  }}</td>
+                    <td>{{ t.solicitud  }}</td>
+                    <td>{{ t.descripcion }}</td>
+                    <td>{{ t.fecha |date:'d-M-y' }} </td>    
+                    </tr>
+                </tbody>
+              </table>
+            
+            
+            
+        </div>
+    </div>
+    <app-footer></app-footer>
+</body>
+    
+    

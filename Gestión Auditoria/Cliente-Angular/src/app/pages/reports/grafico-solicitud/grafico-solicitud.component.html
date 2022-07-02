@@ -1,0 +1,31 @@
+<body class="body-personal">
+
+    <app-header></app-header>
+    
+    <div class="row">
+        <div class="col-2 nopadding">
+            <app-menu></app-menu>
+        </div>
+    
+        <div class="col-10 pl-5 div-table">
+            <h2>{{title}}</h2>
+            <hr>
+            <p>{{description}}</p>
+            <div>
+                <li>Pendientes: {{pendientes}}</li>
+                <li>Finalizadas: {{finalizadas}}</li>
+            </div>  
+            <div class="mb-4"> <!-- style="display: block">  -->
+                <canvas baseChart
+                    [data]="chartData"
+                    [labels]="chartLabels"
+                    [chartType]="chartType"
+                    [options]="chartOptions">
+                </canvas>
+            </div>
+        </div>
+    </div>
+    <app-footer></app-footer>
+</body>
+    
+    

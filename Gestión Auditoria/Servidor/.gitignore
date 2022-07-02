@@ -1,0 +1,7 @@
+# Archivos en la lista negra de github
+# Estos evita que se suban al repositorio
+# Variables de entorno
+.env
+
+#modulos
+node_modules

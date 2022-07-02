@@ -1,0 +1,81 @@
+
+  <body class="body-personal">
+
+    <app-header></app-header>
+    
+    <div class="row ">
+        <div class="col-2 nopadding complete-heigth">
+            <app-menu></app-menu>
+        </div>
+    
+        <div class="col-10 pl-5 div-table">
+            <h2>Agregar funcionarios</h2>
+            <hr>
+
+            <div id="formulario" class="formulario">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">Rodolfo Mendez Calvo</span>
+                </div>
+                <input type="text" class="form-control" placeholder="Nombre Completo" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)]="funcionarioData.nombre">
+              </div>
+            
+              <div class="input-group mb-3">
+                <input type="date" class="form-control btn-dark" placeholder="Fecha de Nacimiento" aria-label="Recipient's username" aria-describedby="basic-addon2" [(ngModel)]="funcionarioData.fechaNacimiento">
+                <div class="input-group-append">
+                  <span class="input-group-text" id="basic-addon2">17/03/1995</span>
+                </div>
+              </div>
+            
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">Sexo</span>
+                </div>
+                <select class="form-control" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)]="funcionarioData.sexo">
+                  <option value="1">Masculino</option>
+                  <option value="2">Femenino</option>
+              </select>   
+              </div>
+            
+              <div class="input-group mb-3">
+                <input type="text" class="form-control btn-dark" placeholder="Foto" aria-label="Recipient's username" aria-describedby="basic-addon2" [(ngModel)]="funcionarioData.Foto">
+                <div class="input-group-append">
+                  <span class="input-group-text" id="basic-addon2">mi foto.png</span>
+                </div>
+              </div>
+            
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">Departamento</span>
+                </div>
+                <select class="form-control"  aria-label="Username" aria-describedby="basic-addon1" [(ngModel)]="funcionarioData.departamento">
+                  <option *ngFor="let f of departamentos; let i=index;" value="{{departamentos[i].id_departamento}}">
+                    {{departamentos[i].nombre}}
+                  </option>
+              </select>   
+              </div>
+            
+              <div class="input-group mb-3">
+                <input type="text" class="form-control btn-dark" placeholder="Logname" aria-label="Recipient's username" aria-describedby="basic-addon2" [(ngModel)]="funcionarioData.logname">
+                <div class="input-group-append">
+                  <span class="input-group-text" id="basic-addon2">admin</span>
+                </div>
+              </div>
+            
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">1234</span>
+                </div>
+                <input type="text" class="form-control" placeholder="Contraseña" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)]="funcionarioData.contrasenia">
+              </div>
+            
+            </div>
+
+            <button type="button" (click)="agregar()" >Aceptar</button>
+
+
+        </div>
+    </div>
+    <app-footer></app-footer>
+</body>
+

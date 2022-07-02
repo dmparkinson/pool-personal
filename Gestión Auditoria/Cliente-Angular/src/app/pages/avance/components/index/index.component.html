@@ -1,0 +1,61 @@
+<body class="body-personal">
+
+    <app-header></app-header>
+    
+    <div class="row ">
+        <div class="col-2 nopadding complete-heigth">
+            <app-menu></app-menu>
+        </div>
+    
+        <div class="col-10 pl-5 div-table">
+            <h2>{{title}}</h2>
+            <hr>
+            <div class="d-flex mb-2 justify-content-between">
+                <avance-agregar (flagReload)="reloadTable($event)"></avance-agregar>
+            </div>
+            <table datatable [dtOptions]="dtOptions" [dtTrigger]="tableTrigger" class="table table-striped table-bordered row-border table-hover" name ="table" id ="table">
+                <thead class="thead-light borderTable">
+                    <tr>
+                    <th>Avance fecha</th>
+                    <th>Funcionario</th>
+                    <th>Solicitud</th>
+                    <th>Trimestre</th>
+                    <th>Documento</th>
+                    <th width="100"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let a of avances">
+                        <td>{{a.fecha_avance | date:'d/M/y' }}</td>
+                        <td>{{a.nombre}}</td>
+                        <td>{{a.alias }}</td>
+                        <td>{{a.descripcion}}</td>
+                        <td class="text-center">
+                            <button class="navMenu" class="pulse-icon" data-placement="top" title="ver documento" (click)="abrirFile( a.documento)">
+                                <i-bs class="text-muted" name="eye-fill" width="20" height="20"></i-bs>
+                            </button>
+                        </td>
+                        <td class="text-center">
+                        <button class="navMenu" class="pulse-icon" data-placement="top" title="Editar avance" (click)="abrirmodalActualizar( modalActualizar, a.id_avance)">
+                            <i-bs class="text-muted" name="pencil-square" width="20" height="20"></i-bs>
+                        </button>
+                        <button type="button" class="pulse-icon" (click)="eliminarAvance(a.id_avance)" data-placement="top" title="Eliminar avance" >
+                            <i-bs class="text-muted"  name="trash-fill" width="20" height="20"></i-bs>
+                        </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <app-footer></app-footer>
+</body>
+
+
+
+<ng-template #modalActualizar let-modal>
+    <avance-actualizar [avance]="avance" [id]="id"  [solicitudes]="solicitudes" 
+    [funcionarios]= "funcionarios" [trimestres]="trimestres"  (flagReload)="reloadTable($event)"></avance-actualizar>
+</ng-template>
+
+
